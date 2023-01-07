@@ -4,8 +4,6 @@ import 'package:tech_media/res/fonts.dart';
 
 import '../../res/color.dart';
 
-
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -19,18 +17,13 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-             Image(image: AssetImage('assets/images/comtech.png')),
-              const Padding(
-                padding:  EdgeInsets.symmetric(vertical: 20),
-                child: Center(child: Text('Comtech' , style: TextStyle(fontFamily: AppFonts.sfProDisplayBold , fontSize: 40, fontWeight: FontWeight.w700),)),
-              )
-            ],
-          )
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image(image: AssetImage('assets/images/comtech.png')),
+        ],
+      )),
     );
   }
 }
