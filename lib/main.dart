@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
                 height: 2.26),
           )),
       // home: const SplashScreen(),
-      initialRoute: RouteName.loginView,
+      initialRoute: RouteName.splashScreen,
       onGenerateRoute: Routes.generateRoute,
     );
   }
