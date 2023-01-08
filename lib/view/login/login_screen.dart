@@ -108,7 +108,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 RoundButton(
                   title: 'Login',
                   onPress: () {},
-                  loading: true,
                 ),
                 const SizedBox(
                   height: 18,
