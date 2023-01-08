@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
+import 'package:tech_media/utils/routes/route_name.dart';
 
 import '../../../utils/utils.dart';
 
@@ -17,7 +18,8 @@ class SignUpController with ChangeNotifier {
     notifyListeners();
   }
 
-  void signup(String username, String email, String password) async {
+  void signup(BuildContext context, String username, String email,
+      String password) async {
     setLoading(true);
     try {
       auth
@@ -32,6 +34,7 @@ class SignUpController with ChangeNotifier {
           'profile': '',
         }).then((value) {
           setLoading(false);
+          Navigator.pushNamed(context, RouteName.dashboardScreen);
         }).onError((error, stackTrace) {
           setLoading(false);
           Utils.ToastMessage(error.toString());

@@ -144,6 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onPress: () {
                               if (_formKey.currentState!.validate()) {
                                 provider.signup(
+                                  context,
                                   userNameController.text.toString(),
                                   emailController.text.toString(),
                                   passwordController.text.toString(),
