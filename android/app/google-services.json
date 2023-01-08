@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "254067843083",
+    "project_id": "comtech-b4525",
+    "storage_bucket": "comtech-b4525.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254067843083:android:59c9ed6b28a66ccf54670e",
+        "android_client_info": {
+          "package_name": "com.example.tech_media"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254067843083-e25ghd0pdcqc2g9e0evat4aru98a05s1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl5imiu6y6PaDD-sr9AnYeELneszTp1H8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254067843083-e25ghd0pdcqc2g9e0evat4aru98a05s1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
