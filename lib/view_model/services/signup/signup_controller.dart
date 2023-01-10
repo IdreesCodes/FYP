@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:tech_media/utils/routes/route_name.dart';
 
 import '../../../utils/utils.dart';
+import '../session_controller.dart';
 
 class SignUpController with ChangeNotifier {
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -25,6 +26,7 @@ class SignUpController with ChangeNotifier {
       auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) {
+        SessionController().userId = value.user!.uid.toString();
         ref.child(value.user!.uid.toString()).set({
           'uid': value.user!.uid.toString(),
           'email': value.user!.email.toString(),
