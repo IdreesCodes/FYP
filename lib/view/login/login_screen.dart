@@ -98,10 +98,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    'Forgot password?',
-                    style: Theme.of(context).textTheme.headline2!.copyWith(
-                        fontSize: 15, decoration: TextDecoration.underline),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteName.forgotScreen);
+                    },
+                    child: Text(
+                      'Forgot password?',
+                      style: Theme.of(context).textTheme.headline2!.copyWith(
+                          fontSize: 15, decoration: TextDecoration.underline),
+                    ),
                   ),
                 ),
                 const SizedBox(
