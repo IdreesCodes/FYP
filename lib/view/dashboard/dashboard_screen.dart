@@ -23,8 +23,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       HomeScreen(),
       const Text('Chat'),
       const Text('Add'),
-      VideoCall(),
-      ProfileScreen(),
+      const VideoCall(),
+      const ProfileScreen(),
     ];
   }
 

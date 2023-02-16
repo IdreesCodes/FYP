@@ -132,7 +132,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextSpan(
                         text: 'Signup',
                         style: Theme.of(context).textTheme.headline2!.copyWith(
-                            fontSize: 15, decoration: TextDecoration.underline),
+                            fontSize: 13.5,
+                            decoration: TextDecoration.underline),
                       ),
                     ]),
                   ),
