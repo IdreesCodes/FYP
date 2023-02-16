@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:tech_media/utils/routes/route_name.dart';
 import 'package:provider/provider.dart';
 import 'package:tech_media/view_model/services/login/login_controller.dart';
@@ -45,21 +47,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: height * .05,
                 ),
-                Text(
-                  'Welcome To COMTACH',
-                  style: Theme.of(context).textTheme.headline3,
+                SvgPicture.asset(
+                  'assets/svg/login.svg',
+                  height: 300,
+                  width: 200,
                 ),
-                SizedBox(
-                  height: height * .01,
-                ),
-                Text(
-                  'Enter Your Credentials To Proceed Further',
-                  style: Theme.of(context).textTheme.subtitle1,
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: height * .01,
-                ),
+                // Lottie.asset('assets/lottie/login.json'),
                 Form(
                     key: _formKey,
                     child: Padding(
@@ -93,9 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     )),
-                const SizedBox(
-                  height: 30,
-                ),
+
                 Align(
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
@@ -105,12 +96,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'Forgot password?',
                       style: Theme.of(context).textTheme.headline2!.copyWith(
-                          fontSize: 15, decoration: TextDecoration.underline),
+                          fontSize: 13, decoration: TextDecoration.underline),
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 ChangeNotifierProvider(
                   create: (_) => LoginController(),
@@ -137,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pushNamed(context, RouteName.signUpScreen);
                   },
                   child: Text.rich(
-                    TextSpan(text: 'Dont have an account?', children: [
+                    TextSpan(text: 'Don\'t have an account? ', children: [
                       TextSpan(
                         text: 'Signup',
                         style: Theme.of(context).textTheme.headline2!.copyWith(

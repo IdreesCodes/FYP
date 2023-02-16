@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tech_media/utils/routes/route_name.dart';
 import 'package:provider/provider.dart';
 import 'package:tech_media/view_model/services/login/login_controller.dart';
@@ -49,26 +50,20 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 SizedBox(
                   height: height * .05,
                 ),
-                Text(
-                  'Forgot Your Password?',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-                SizedBox(
-                  height: height * .01,
+                SvgPicture.asset(
+                  'assets/svg/forget.svg',
+                  height: 300,
+                  width: 200,
                 ),
                 Text(
-                  'Enter Your Email To Recover Your Password',
+                  'Enter Email To Recover The Password',
                   style: Theme.of(context).textTheme.subtitle1,
                   textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: height * .01,
                 ),
                 Form(
                     key: _formKey,
                     child: Padding(
-                      padding: EdgeInsets.only(
-                          top: height * .06, bottom: height * .01),
+                      padding: EdgeInsets.only(top: height * .03),
                       child: Column(
                         children: [
                           InputTextField(
@@ -82,14 +77,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 return value.isEmpty ? 'enter email' : null;
                               }),
                           SizedBox(
-                            height: height * 0.01,
+                            height: height * 0.05,
                           ),
                         ],
                       ),
                     )),
-                const SizedBox(
-                  height: 30,
-                ),
                 ChangeNotifierProvider(
                   create: (_) => ForgotPasswordController(),
                   child: Consumer<ForgotPasswordController>(

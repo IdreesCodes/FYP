@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:tech_media/utils/routes/route_name.dart';
 import 'package:tech_media/view_model/services/signup/signup_controller.dart';
@@ -54,23 +55,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: height * .05,
-                          ),
-                          Text(
-                            'Welcome To COMTACH',
-                            style: Theme.of(context).textTheme.headline3,
-                          ),
-                          SizedBox(
-                            height: height * .01,
-                          ),
-                          Text(
-                            'Enter Your Credentials To Create Account',
-                            style: Theme.of(context).textTheme.subtitle1,
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(
-                            height: height * .01,
+                          SvgPicture.asset(
+                            'assets/svg/signup.svg',
+                            height: 300,
+                            width: 200,
                           ),
                           Form(
                               key: _formKey,

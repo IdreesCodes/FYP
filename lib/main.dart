@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_media/res/color.dart';
 import 'package:tech_media/res/fonts.dart';
@@ -35,14 +36,22 @@ void main() async {
     sound: true,
   );
 
-  print('User granted permission: ${settings.authorizationStatus}');
+  if (kDebugMode) {
+    print('User granted permission: ${settings.authorizationStatus}');
+  }
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message.data}');
+    if (kDebugMode) {
+      print('Got a message whilst in the foreground!');
+    }
+    if (kDebugMode) {
+      print('Message data: ${message.data}');
+    }
 
     if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification}');
+      if (kDebugMode) {
+        print('Message also contained a notification: ${message.notification}');
+      }
     }
   });
 
