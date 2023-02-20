@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../res/color.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               Expanded(

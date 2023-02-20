@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image(image: AssetImage('assets/images/comtech.png')),
+          Image(image: AssetImage('assets/gifs/logo.gif')),
         ],
       )),
     );

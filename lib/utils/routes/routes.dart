@@ -3,6 +3,7 @@ import 'package:tech_media/utils/routes/route_name.dart';
 import 'package:tech_media/view/dashboard/dashboard_screen.dart';
 import 'package:tech_media/view/login/login_screen.dart';
 import 'package:tech_media/view/signup/sign_up_screen.dart';
+import 'package:tech_media/view/splash/onBoardingScreen.dart';
 import 'package:tech_media/view/splash/splash_screen.dart';
 import 'package:tech_media/view/forgot_password/forgot_password.dart';
 
@@ -23,6 +24,11 @@ class Routes {
         return MaterialPageRoute(builder: (_) => const DashboardScreen());
       case RouteName.forgotScreen:
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
+
+      /* case RouteName.onBoardScreen:
+        return MaterialPageRoute(builder: (_) => StaggeredGrid());
+
+      */
 
       default:
         return MaterialPageRoute(builder: (_) {
