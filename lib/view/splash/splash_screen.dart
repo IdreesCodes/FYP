@@ -29,8 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image(image: AssetImage('assets/gifs/logo.gif')),
+        children: const [
+          Image(image: AssetImage('assets/gifs/comtech.gif')),
         ],
       )),
     );

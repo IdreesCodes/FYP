@@ -25,10 +25,8 @@ class Routes {
       case RouteName.forgotScreen:
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
 
-      /* case RouteName.onBoardScreen:
-        return MaterialPageRoute(builder: (_) => StaggeredGrid());
-
-      */
+      case RouteName.onBoardScreen:
+        return MaterialPageRoute(builder: (_) => OnBoard());
 
       default:
         return MaterialPageRoute(builder: (_) {
