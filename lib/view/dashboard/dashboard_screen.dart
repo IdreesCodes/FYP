@@ -31,31 +31,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List<PersistentBottomNavBarItem> _navBarItem() {
     return [
       PersistentBottomNavBarItem(
-        activeColorPrimary: Colors.green.shade300,
+        activeColorPrimary: AppColors.primaryColor,
         icon: const Icon(Icons.home_filled, color: Colors.black),
-        inactiveIcon: Icon(Icons.home_filled, color: Colors.grey.shade700),
+        inactiveIcon: Icon(Icons.home_filled, color: Colors.black87),
       ),
       PersistentBottomNavBarItem(
-        activeColorPrimary: Colors.green.shade300,
+        activeColorPrimary: AppColors.primaryColor,
         icon: const Icon(Icons.chat_bubble_sharp, color: Colors.black),
-        inactiveIcon:
-            Icon(Icons.chat_bubble_sharp, color: Colors.grey.shade700),
+        inactiveIcon: Icon(Icons.chat_bubble_sharp, color: Colors.black87),
       ),
       PersistentBottomNavBarItem(
-        activeColorPrimary: Colors.green.shade300,
+        activeColorPrimary: AppColors.primaryColor,
         icon: const Icon(Icons.add, color: Colors.black),
-        inactiveIcon: Icon(Icons.add, color: Colors.grey.shade700),
+        inactiveIcon: Icon(Icons.add, color: Colors.black87),
       ),
       PersistentBottomNavBarItem(
-        activeColorPrimary: Colors.green.shade300,
+        activeColorPrimary: AppColors.primaryColor,
         icon: const Icon(Icons.videocam, color: Colors.black),
-        inactiveIcon: Icon(Icons.videocam, color: Colors.grey.shade700),
+        inactiveIcon: Icon(Icons.videocam, color: Colors.black87),
       ),
       PersistentBottomNavBarItem(
-          activeColorPrimary: Colors.green.shade300,
-          icon: const Icon(Icons.person_outline, color: Colors.black),
-          inactiveIcon:
-              Icon(Icons.person_outline, color: Colors.grey.shade700)),
+          activeColorPrimary: AppColors.primaryColor,
+          icon: const Icon(Icons.person_outline, color: Colors.black87),
+          inactiveIcon: Icon(Icons.person_outline, color: Colors.black87)),
     ];
   }
 
@@ -65,11 +63,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
       context,
       screens: _buildScreen(),
       items: _navBarItem(),
-      backgroundColor: AppColors.textFieldDefaultFocus,
+      backgroundColor: Colors.white,
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(5),
       ),
-      navBarStyle: NavBarStyle.style10,
+      navBarStyle: NavBarStyle.style7,
     );
   }
 }
