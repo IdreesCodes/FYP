@@ -35,6 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: true,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             logout();
@@ -94,7 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     ? map['profile']
                                                                 .toString() ==
                                                             ""
-                                                        ? Icon(
+                                                        ? const Icon(
                                                             Icons
                                                                 .person_2_outlined,
                                                             size: 30,
@@ -148,18 +149,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   )
                                 ],
                               ),
-                              ReUseAbleRow(
-                                  title: 'Username',
-                                  iconData: Icons.person_outline,
-                                  value: map['username']),
+                              GestureDetector(
+                                onTap: () {
+                                  provider.userNameDialogAlert(
+                                      context, map['username']);
+                                },
+                                child: ReUseAbleRow(
+                                    title: 'Username',
+                                    iconData: Icons.person_outline,
+                                    value: map['username']),
+                              ),
                               ReUseAbleRow(
                                   title: 'Email',
                                   iconData: Icons.mail_outline_outlined,
                                   value: map['email']),
-                              ReUseAbleRow(
-                                  title: 'Phone',
-                                  iconData: Icons.phone_callback_rounded,
-                                  value: map['email']),
+                              GestureDetector(
+                                onTap: () {
+                                  provider.showPhoneDialogAlert(
+                                      context, map['phone']);
+                                },
+                                child: ReUseAbleRow(
+                                    title: 'Phone',
+                                    iconData: Icons.phone_callback_rounded,
+                                    value: map['phone']),
+                              ),
                             ],
                           );
                         } else {

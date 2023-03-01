@@ -6,10 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tech_media/res/color.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:tech_media/res/components/input_text_field.dart';
 import 'package:tech_media/utils/utils.dart';
 import 'package:tech_media/view_model/services/session_controller.dart';
 
 class ProfileController with ChangeNotifier {
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final nameFocusNode = FocusNode();
+  final phoneFocusNode = FocusNode();
+
   DatabaseReference ref = FirebaseDatabase.instance.ref().child('Users');
 
   firebase_storage.FirebaseStorage storage =
@@ -103,5 +109,109 @@ class ProfileController with ChangeNotifier {
       setLoading(false);
       Utils.ToastMessage(error.toString());
     });
+  }
+
+  Future<void> userNameDialogAlert(BuildContext context, String name) {
+    nameController.text = name;
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Update Username'),
+            content: SingleChildScrollView(
+              child: Column(
+                children: [
+                  InputTextField(
+                    myController: nameController,
+                    focusNode: nameFocusNode,
+                    onFieldSubmittedValue: (value) {},
+                    keyBoardType: TextInputType.text,
+                    obscureText: false,
+                    hint: "enter name",
+                    onValidator: (value) {},
+                  )
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  ref.child(SessionController().userId.toString()).update({
+                    'username': nameController.text.toString(),
+                  }).then((value) {
+                    nameController.clear();
+                  });
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Save',
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Cancel',
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle2!
+                        .copyWith(color: AppColors.alertColor)),
+              )
+            ],
+          );
+        });
+  }
+
+  Future<void> showPhoneDialogAlert(BuildContext context, String phone) {
+    phoneController.text = phone;
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Update phone'),
+            content: SingleChildScrollView(
+              child: Column(
+                children: [
+                  InputTextField(
+                    myController: phoneController,
+                    focusNode: phoneFocusNode,
+                    onFieldSubmittedValue: (value) {},
+                    keyBoardType: TextInputType.phone,
+                    obscureText: false,
+                    hint: "enter phone number",
+                    onValidator: (value) {},
+                  )
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  ref.child(SessionController().userId.toString()).update({
+                    'phone': phoneController.text.toString(),
+                  }).then((value) {
+                    phoneController.clear();
+                  });
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Save',
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Cancel',
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle2!
+                        .copyWith(color: AppColors.alertColor)),
+              )
+            ],
+          );
+        });
   }
 }
