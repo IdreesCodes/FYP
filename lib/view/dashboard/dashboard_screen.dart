@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:tech_media/home/check.dart';
+import 'package:tech_media/view/dashboard/messaging_screen.dart';
 import 'package:tech_media/view/dashboard/profile.dart';
 import 'package:tech_media/view/dashboard/video_call.dart';
+import 'package:tech_media/view/users/user_list_screen.dart';
 
 import '../../home/homescreen.dart';
 import '../../res/color.dart';
@@ -20,9 +23,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final controller = PersistentTabController(initialIndex: 0);
   List<Widget> _buildScreen() {
     return [
-      HomeScreen(),
-      const Text('Chat'),
-      const Text('Add'),
+      const MessagingScreen(),
+      const UsersListScreen(),
+      const Check(),
       const VideoCall(),
       const ProfileScreen(),
     ];

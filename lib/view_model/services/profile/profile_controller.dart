@@ -169,6 +169,8 @@ class ProfileController with ChangeNotifier {
         context: context,
         builder: (context) {
           return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             title: const Text('Update phone'),
             content: SingleChildScrollView(
               child: Column(

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:tech_media/view_model/services/profile/profile_controller.dart';
 
@@ -25,24 +26,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
   }
 
-  Future<void> logout() async {
-    await FirebaseAuth.instance.signOut();
-    //SharedPreferences prefs = await SharedPreferences.getInstance();
-    // prefs.clear();
-    debugPrint('Logged Out');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: true,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            logout();
-          },
-          child: const Icon(Icons.logout_rounded),
-          backgroundColor: AppColors.primaryColor,
-        ),
         body: ChangeNotifierProvider(
           create: (_) => ProfileController(),
           child: Consumer<ProfileController>(
@@ -70,73 +57,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 height: 20,
                               ),
                               Stack(
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.center,
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15.0),
-                                    child: Center(
-                                      child: Container(
-                                        height: 130,
-                                        width: 130,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                                color: AppColors.primaryColor,
-                                                width: 1.2)),
-                                        child: InkWell(
-                                            onTap: () {
-                                              provider.pickImage(context);
-                                            },
-                                            child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(100),
-                                                child: provider.image == null
-                                                    ? map['profile']
-                                                                .toString() ==
-                                                            ""
-                                                        ? const Icon(
-                                                            Icons
-                                                                .person_2_outlined,
-                                                            size: 30,
-                                                          )
-                                                        : Image(
-                                                            fit: BoxFit.cover,
-                                                            image: NetworkImage(
-                                                                map["profile"]
-                                                                    .toString()),
-                                                            loadingBuilder:
-                                                                (context, child,
-                                                                    loadingProgress) {
-                                                              if (loadingProgress ==
-                                                                  null)
-                                                                return child;
-                                                              return const Center(
-                                                                  child:
-                                                                      CircularProgressIndicator());
-                                                            },
-                                                            errorBuilder: (
-                                                              context,
-                                                              object,
-                                                              stack,
-                                                            ) {
-                                                              return Container(
-                                                                  child:
-                                                                      const Icon(
-                                                                Icons
-                                                                    .error_outline,
-                                                                color: AppColors
-                                                                    .alertColor,
-                                                              ));
-                                                            })
-                                                    : Image.file(File(provider
-                                                            .image!.path)
+                                  SizedBox(
+                                    height: 220,
+                                    width: 180,
+                                    child: Lottie.asset(
+                                        'assets/lottie/circle.json'),
+                                  ),
+                                  Container(
+                                    height: 120,
+                                    width: 120,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            color: AppColors.primaryColor,
+                                            width: 1.2)),
+                                    child: InkWell(
+                                        onTap: () {
+                                          provider.pickImage(context);
+                                        },
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(100),
+                                            child: provider.image == null
+                                                ? map['profile'].toString() ==
+                                                        ""
+                                                    ? const Icon(
+                                                        Icons.person_2_outlined,
+                                                        size: 30,
+                                                      )
+                                                    : Image(
+                                                        fit: BoxFit.cover,
+                                                        image: NetworkImage(
+                                                            map["profile"]
+                                                                .toString()),
+                                                        loadingBuilder: (context,
+                                                            child,
+                                                            loadingProgress) {
+                                                          if (loadingProgress ==
+                                                              null)
+                                                            return child;
+                                                          return const Center(
+                                                              child:
+                                                                  CircularProgressIndicator());
+                                                        },
+                                                        errorBuilder: (
+                                                          context,
+                                                          object,
+                                                          stack,
+                                                        ) {
+                                                          return Container(
+                                                              child: const Icon(
+                                                            Icons.error_outline,
+                                                            color: AppColors
+                                                                .alertColor,
+                                                          ));
+                                                        })
+                                                : Image.file(
+                                                    File(provider.image!.path)
                                                         .absolute))),
-                                      ),
-                                    ),
                                   ),
                                   const Padding(
-                                    padding: EdgeInsets.all(4.0),
+                                    padding: EdgeInsets.only(top: 120.0),
                                     child: CircleAvatar(
                                       backgroundColor: AppColors.primaryColor,
                                       radius: 11,
