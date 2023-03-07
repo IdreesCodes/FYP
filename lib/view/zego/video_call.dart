@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'dart:math' as math;
 
-import '../../res/components/input_text_field.dart';
-import '../../res/components/round_button.dart';
+import '../../../res/components/input_text_field.dart';
+import '../../../res/components/round_button.dart';
 
 final String localUserID = math.Random().nextInt(10000).toString();
 
@@ -27,6 +27,10 @@ class _VideoCallState extends State<VideoCall> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Image.asset(
+                'assets/images/call.png',
+                width: MediaQuery.of(context).size.width * 0.7,
+              ),
               InputTextField(
                   myController: callingId,
                   focusNode: userNameFocusNode,

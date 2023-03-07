@@ -2,9 +2,9 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../res/color.dart';
-import '../view_model/services/profile/profile_controller.dart';
-import '../view_model/services/session_controller.dart';
+import '../../res/color.dart';
+import '../../view_model/services/profile/profile_controller.dart';
+import '../../view_model/services/session_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

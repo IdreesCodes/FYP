@@ -4,10 +4,12 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tech_media/home/check.dart';
 import 'package:tech_media/view/dashboard/messaging_screen.dart';
 import 'package:tech_media/view/dashboard/profile.dart';
-import 'package:tech_media/view/dashboard/video_call.dart';
+import 'package:tech_media/view/dashboard/video_dashboard.dart';
 import 'package:tech_media/view/users/user_list_screen.dart';
+import 'package:tech_media/view/zego/live_streaming.dart';
 
-import '../../home/homescreen.dart';
+import '../zego/video_call.dart';
+import 'homescreen.dart';
 import '../../res/color.dart';
 import '../../utils/routes/route_name.dart';
 import '../../view_model/services/session_controller.dart';
@@ -23,10 +25,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final controller = PersistentTabController(initialIndex: 0);
   List<Widget> _buildScreen() {
     return [
-      const MessagingScreen(),
-      const UsersListScreen(),
-      const Check(),
-      const VideoCall(),
+      const AllUsersScreen(),
+      // const VideoCall(),
+      // const VideoCall(),
+      VideoDashboard(),
       const ProfileScreen(),
     ];
   }
@@ -37,16 +39,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
         activeColorPrimary: AppColors.primaryColor,
         icon: const Icon(Icons.home_filled, color: Colors.black),
         inactiveIcon: Icon(Icons.home_filled, color: Colors.black87),
-      ),
-      PersistentBottomNavBarItem(
-        activeColorPrimary: AppColors.primaryColor,
-        icon: const Icon(Icons.chat_bubble_sharp, color: Colors.black),
-        inactiveIcon: Icon(Icons.chat_bubble_sharp, color: Colors.black87),
-      ),
-      PersistentBottomNavBarItem(
-        activeColorPrimary: AppColors.primaryColor,
-        icon: const Icon(Icons.add, color: Colors.black),
-        inactiveIcon: Icon(Icons.add, color: Colors.black87),
       ),
       PersistentBottomNavBarItem(
         activeColorPrimary: AppColors.primaryColor,

@@ -1,16 +1,18 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:tech_media/view/chat/messaging_screen.dart';
 import 'package:tech_media/view_model/services/session_controller.dart';
 
-class MessagingScreen extends StatefulWidget {
-  const MessagingScreen({Key? key}) : super(key: key);
+class AllUsersScreen extends StatefulWidget {
+  const AllUsersScreen({Key? key}) : super(key: key);
 
   @override
-  State<MessagingScreen> createState() => _MessagingScreenState();
+  State<AllUsersScreen> createState() => _AllUsersScreenState();
 }
 
-class _MessagingScreenState extends State<MessagingScreen> {
+class _AllUsersScreenState extends State<AllUsersScreen> {
   DatabaseReference ref = FirebaseDatabase.instance.ref().child('Users');
   String username = '';
   @override
@@ -115,6 +117,27 @@ class _MessagingScreenState extends State<MessagingScreen> {
                                               } else {
                                                 return Card(
                                                   child: ListTile(
+                                                    onTap: () {
+                                                      PersistentNavBarNavigator
+                                                          .pushNewScreen(
+                                                        context,
+                                                        screen: ChatScreen(
+                                                          name: snapshot
+                                                              .child('username')
+                                                              .value
+                                                              .toString(),
+                                                          image: snapshot
+                                                              .child('profile')
+                                                              .value
+                                                              .toString(),
+                                                          receiverId: snapshot
+                                                              .child('uid')
+                                                              .value
+                                                              .toString(),
+                                                        ),
+                                                        withNavBar: false,
+                                                      );
+                                                    },
                                                     leading: CircleAvatar(
                                                       backgroundImage:
                                                           NetworkImage(snapshot
