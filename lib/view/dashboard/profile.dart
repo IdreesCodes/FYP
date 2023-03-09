@@ -5,9 +5,11 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:tech_media/res/components/round_button.dart';
 import 'package:tech_media/view_model/services/profile/profile_controller.dart';
 
 import '../../res/color.dart';
+import '../../utils/routes/route_name.dart';
 import '../../view_model/services/session_controller.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -19,6 +21,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final ref = FirebaseDatabase.instance.ref('Users');
+
   String? check = SessionController().userId;
   @override
   void initState() {
@@ -155,6 +158,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     title: 'Phone',
                                     iconData: Icons.phone_callback_rounded,
                                     value: map['phone']),
+                              ),
+                              SizedBox(
+                                height: 50,
                               ),
                             ],
                           );

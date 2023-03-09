@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'dart:math' as math;
@@ -5,7 +6,9 @@ import 'dart:math' as math;
 import '../../../res/components/input_text_field.dart';
 import '../../../res/components/round_button.dart';
 
-final String localUserID = math.Random().nextInt(10000).toString();
+final user = FirebaseAuth.instance.currentUser;
+final userID = user?.uid;
+final displayName = user?.email;
 
 class VideoCall extends StatefulWidget {
   const VideoCall({Key? key}) : super(key: key);
@@ -73,8 +76,8 @@ class CallPage extends StatelessWidget {
         appID: 865675497,
         appSign:
             '446e63e71d94879525f97ddc3c91f8c7fd157538c06a127d28ff816b9db2835f',
-        userID: '$localUserID',
-        userName: "user_$localUserID",
+        userID: userID.toString(),
+        userName: displayName.toString(),
         callID: callID,
         config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
           ..onOnlySelfInRoom = (context) {

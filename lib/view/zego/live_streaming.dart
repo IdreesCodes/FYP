@@ -1,12 +1,16 @@
 import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:zego_uikit_prebuilt_live_streaming/zego_uikit_prebuilt_live_streaming.dart';
 
 import '../../res/color.dart';
 
-final String userID = Random().nextInt(900000 + 100000).toString();
+//final String userID = Random().nextInt(900000 + 100000).toString();
+final user = FirebaseAuth.instance.currentUser;
+final userID = user?.uid;
+final displayName = user?.email;
 
 class LiveStreaming extends StatefulWidget {
   LiveStreaming({
@@ -18,7 +22,7 @@ class LiveStreaming extends StatefulWidget {
 }
 
 class _LiveStreamingState extends State<LiveStreaming> {
-  final String userID = Random().nextInt(900000 + 100000).toString();
+  // final String userID = Random().nextInt(900000 + 100000).toString();
   // Generate Live Streaming ID with 6 digit length
   final liveIDController = TextEditingController(
     text: Random().nextInt(900000 + 100000).toString(),
@@ -122,6 +126,7 @@ class LivePage extends StatelessWidget {
     required this.liveID,
     this.isHost = false,
   }) : super(key: key);
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Read AppID and AppSign from .env file
   // Make sure you replace with your own
@@ -136,8 +141,8 @@ class LivePage extends StatelessWidget {
         appID: 1343989995,
         appSign:
             '109c3e7765015285bceddb808544fe1ec54025374ac8dc96f0a0fa6b67f9e0a9',
-        userID: userID,
-        userName: 'user_$userID',
+        userID: userID.toString(),
+        userName: displayName.toString(),
         liveID: liveID,
         config: isHost
             ? ZegoUIKitPrebuiltLiveStreamingConfig.host()
@@ -146,5 +151,15 @@ class LivePage extends StatelessWidget {
           ..audioVideoViewConfig.showSoundWavesInAudioMode = true,
       ),
     );
+  }
+}
+
+Future<String?> getUsernameFromFirebase() async {
+  final User? user = FirebaseAuth.instance.currentUser;
+  if (user != null && user.displayName != null) {
+    return user.displayName;
+  } else {
+    // User is not signed in or display name is not set
+    return null;
   }
 }

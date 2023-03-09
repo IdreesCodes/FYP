@@ -53,7 +53,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                             child: Text(
                               'Welcome back,',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black38,
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -67,7 +67,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                             child: Text(
                               '$username',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black38,
                                 fontSize: 48.0,
                                 fontWeight: FontWeight.bold,
                               ),

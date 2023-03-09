@@ -4,10 +4,14 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tech_media/home/check.dart';
 import 'package:tech_media/view/dashboard/messaging_screen.dart';
 import 'package:tech_media/view/dashboard/profile.dart';
+import 'package:tech_media/view/dashboard/profile_check.dart';
 import 'package:tech_media/view/dashboard/video_dashboard.dart';
 import 'package:tech_media/view/users/user_list_screen.dart';
 import 'package:tech_media/view/zego/live_streaming.dart';
+import 'package:tech_media/view/zego/testing.dart';
+import 'package:tech_media/view/zego/video_confrence.dart';
 
+import '../zego/audio_room.dart';
 import '../zego/video_call.dart';
 import 'homescreen.dart';
 import '../../res/color.dart';
@@ -28,8 +32,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       const AllUsersScreen(),
       // const VideoCall(),
       // const VideoCall(),
-      VideoDashboard(),
-      const ProfileScreen(),
+      const VideoDashboard(),
+      ProfileScreen(),
     ];
   }
 
@@ -38,17 +42,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
       PersistentBottomNavBarItem(
         activeColorPrimary: AppColors.primaryColor,
         icon: const Icon(Icons.home_filled, color: Colors.black),
-        inactiveIcon: Icon(Icons.home_filled, color: Colors.black87),
+        inactiveIcon: const Icon(Icons.home_filled, color: Colors.black87),
       ),
       PersistentBottomNavBarItem(
         activeColorPrimary: AppColors.primaryColor,
         icon: const Icon(Icons.videocam, color: Colors.black),
-        inactiveIcon: Icon(Icons.videocam, color: Colors.black87),
+        inactiveIcon: const Icon(Icons.videocam, color: Colors.black87),
       ),
       PersistentBottomNavBarItem(
           activeColorPrimary: AppColors.primaryColor,
           icon: const Icon(Icons.person_outline, color: Colors.black87),
-          inactiveIcon: Icon(Icons.person_outline, color: Colors.black87)),
+          inactiveIcon:
+              const Icon(Icons.person_outline, color: Colors.black87)),
     ];
   }
 
