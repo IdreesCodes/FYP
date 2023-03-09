@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:zego_uikit_prebuilt_live_streaming/zego_uikit_prebuilt_live_streaming.dart';
@@ -122,6 +123,7 @@ class LivePage extends StatelessWidget {
     required this.liveID,
     this.isHost = false,
   }) : super(key: key);
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Read AppID and AppSign from .env file
   // Make sure you replace with your own
@@ -131,13 +133,15 @@ class LivePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User? user = FirebaseAuth.instance.currentUser;
+    final String? username = user?.displayName;
     return SafeArea(
       child: ZegoUIKitPrebuiltLiveStreaming(
         appID: 1343989995,
         appSign:
             '109c3e7765015285bceddb808544fe1ec54025374ac8dc96f0a0fa6b67f9e0a9',
         userID: userID,
-        userName: 'user_$userID',
+        userName: userID.toString(),
         liveID: liveID,
         config: isHost
             ? ZegoUIKitPrebuiltLiveStreamingConfig.host()
@@ -146,5 +150,15 @@ class LivePage extends StatelessWidget {
           ..audioVideoViewConfig.showSoundWavesInAudioMode = true,
       ),
     );
+  }
+}
+
+Future<String?> getUsernameFromFirebase() async {
+  final User? user = FirebaseAuth.instance.currentUser;
+  if (user != null && user.displayName != null) {
+    return user.displayName;
+  } else {
+    // User is not signed in or display name is not set
+    return null;
   }
 }

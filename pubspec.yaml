@@ -42,7 +42,7 @@ dependencies:
   firebase_core: ^2.3.0
   firebase_database: ^10.0.6
   persistent_bottom_nav_bar:
-  flutter_svg: ^1.1.5
+  flutter_svg: ^2.0.2
   zego_uikit_prebuilt_call:
   firebase_messaging: ^14.2.2
   flutter_firebase_chat_core: ^1.6.4
@@ -51,6 +51,10 @@ dependencies:
   app_settings: ^4.2.0
   bubble: ^1.2.1
   zego_uikit_prebuilt_live_streaming: ^2.3.0
+  zego_uikit_prebuilt_video_conference: ^2.1.1
+  zego_uikit_prebuilt_live_audio_room: ^2.2.0
+  google_fonts: ^4.0.3
+
 
 dev_dependencies:
   flutter_test:

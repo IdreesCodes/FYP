@@ -32,8 +32,8 @@ class _ChatScreenState extends State<ChatScreen> {
         elevation: 0,
         title: Text(widget.name.toString()),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Icon(Icons.menu_rounded),
           )
         ],
@@ -51,7 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -60,18 +60,19 @@ class _ChatScreenState extends State<ChatScreen> {
                     itemBuilder: (context, index) {
                       if (index % 2 == 0) {
                         return Bubble(
-                          margin: BubbleEdges.only(top: 10),
+                          margin: const BubbleEdges.only(top: 10),
                           alignment: Alignment.topRight,
                           nip: BubbleNip.rightTop,
-                          color: Color.fromRGBO(225, 255, 199, 1.0),
-                          child: Text('Idrees', textAlign: TextAlign.right),
+                          color: const Color.fromRGBO(225, 255, 199, 1.0),
+                          child:
+                              const Text('Idrees', textAlign: TextAlign.right),
                         );
                       } else {
                         return Bubble(
-                          margin: BubbleEdges.only(top: 10),
+                          margin: const BubbleEdges.only(top: 10),
                           alignment: Alignment.topLeft,
                           nip: BubbleNip.leftTop,
-                          child: Text('Irfan'),
+                          child: const Text('Irfan'),
                         );
                       }
 
@@ -90,12 +91,12 @@ class _ChatScreenState extends State<ChatScreen> {
                         ?.copyWith(height: 0, fontSize: 18),
                     decoration: InputDecoration(
                       suffixIcon: Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
                           onTap: () {
                             sendMessage();
                           },
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             child: Icon(Icons.send_outlined),
                           ),
                         ),
@@ -109,7 +110,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               height: 0,
                               color: AppColors.primaryTextTextColor
                                   .withOpacity(0.8)),
-                      border: OutlineInputBorder(
+                      border: const OutlineInputBorder(
                           borderSide: BorderSide(
                               color: AppColors.textFieldDefaultFocus),
                           borderRadius: BorderRadius.all(Radius.circular(40))),
@@ -127,7 +128,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   ),
                 )),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
               ],
