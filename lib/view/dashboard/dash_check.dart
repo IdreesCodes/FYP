@@ -1,32 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:animations/animations.dart';
 
-class AnimatedDashboard extends StatefulWidget {
-  const AnimatedDashboard({Key? key}) : super(key: key);
-
+class DashCheck extends StatefulWidget {
   @override
-  _AnimatedDashboardState createState() => _AnimatedDashboardState();
+  _DashCheckState createState() => _DashCheckState();
 }
 
-class _AnimatedDashboardState extends State<AnimatedDashboard>
+class _DashCheckState extends State<DashCheck>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<Offset> _animation;
+  late Animation<double> _animation;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 500),
-      vsync: this,
-    );
-    _animation = Tween<Offset>(
-      begin: const Offset(-1.0, 0.0),
-      end: const Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    ));
+        vsync: this, duration: const Duration(milliseconds: 500));
+    _animation = Tween<double>(begin: 0, end: 1).animate(_controller);
   }
 
   @override
@@ -35,35 +24,50 @@ class _AnimatedDashboardState extends State<AnimatedDashboard>
     super.dispose();
   }
 
+  void _toggleAnimation() {
+    if (_controller.isCompleted) {
+      _controller.reverse();
+    } else {
+      _controller.forward();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Animated Dashboard'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SlideTransition(
-            position: _animation,
-            child: Container(
-              width: 150.0,
-              height: 150.0,
-              color: Colors.black45,
-              child: const Center(child: Text('Widget 1')),
-            ),
+        appBar: AppBar(
+          title: const Text('Dashboard'),
+        ),
+        body: Center(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) {
+              return Opacity(
+                opacity: _animation.value,
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color: Colors.blue,
+                ),
+              );
+            },
           ),
-          SlideTransition(
-            position: _animation,
-            child: Container(
-              width: 150.0,
-              height: 150.0,
-              color: Colors.blue,
-              child: const Center(child: Text('Widget 2')),
-            ),
+          const SizedBox(height: 20),
+          AnimatedBuilder(
+            animation: _animation,
+            builder: (context, child) {
+              return Opacity(
+                opacity: _animation.value,
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color: Colors.green,
+                ),
+              );
+            },
           ),
-        ],
-      ),
-    );
+        ])));
   }
 }
