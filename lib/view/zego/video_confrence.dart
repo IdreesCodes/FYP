@@ -30,9 +30,8 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image(
-            image: AssetImage('assets/images/video_conf.png'),
-            height: 300,
-            width: 300,
+            image: const AssetImage('assets/images/video_conf.png'),
+            width: MediaQuery.of(context).size.width * 0.90,
           ),
           Padding(
             padding:

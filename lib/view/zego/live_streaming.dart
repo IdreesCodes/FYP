@@ -46,17 +46,12 @@ class _LiveStreamingState extends State<LiveStreaming> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/videoCall.png',
-              width: MediaQuery.of(context).size.width * 0.7,
+              'assets/images/live-stream.png',
+              width: MediaQuery.of(context).size.width * 0.90,
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Text('Your UserID: $userID'),
+
             // const Text('Please test with two or more devices'),
-            const SizedBox(
-              height: 30,
-            ),
+
             TextFormField(
               controller: liveIDController,
               decoration: const InputDecoration(

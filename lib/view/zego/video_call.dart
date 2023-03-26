@@ -31,8 +31,8 @@ class _VideoCallState extends State<VideoCall> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/call.png',
-                width: MediaQuery.of(context).size.width * 0.7,
+                'assets/images/videoCall.png',
+                width: MediaQuery.of(context).size.width * 0.99,
               ),
               InputTextField(
                   myController: callingId,
