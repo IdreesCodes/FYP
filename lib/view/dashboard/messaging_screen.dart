@@ -104,7 +104,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                     const Padding(
                                       padding: EdgeInsets.only(left: 13.0),
                                       child: Text(
-                                        'Your feed',
+                                        'Your Feed',
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 24.0,
@@ -158,10 +158,16 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                                               .value
                                                               .toString()),
                                                     ),
-                                                    title: Text(snapshot
-                                                        .child('username')
-                                                        .value
-                                                        .toString()),
+                                                    title: Text(
+                                                      snapshot
+                                                          .child('username')
+                                                          .value
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    ),
                                                     subtitle: Text(snapshot
                                                         .child('email')
                                                         .value

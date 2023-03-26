@@ -34,10 +34,9 @@ class _AudioRoomScreenState extends State<AudioRoomScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Image(
-            image: AssetImage('assets/images/video_conf.png'),
-            height: 300,
-            width: 300,
+          Image(
+            image: AssetImage('assets/images/audio.png'),
+            width: MediaQuery.of(context).size.width * 0.90,
           ),
           Padding(
             padding:

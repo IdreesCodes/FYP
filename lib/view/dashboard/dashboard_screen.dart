@@ -6,7 +6,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tech_media/home/check.dart';
 import 'package:tech_media/view/dashboard/messaging_screen.dart';
 import 'package:tech_media/view/dashboard/profile.dart';
-import 'package:tech_media/view/dashboard/profile_check.dart';
+
 import 'package:tech_media/view/dashboard/video_dashboard.dart';
 import 'package:tech_media/view/users/user_list_screen.dart';
 import 'package:tech_media/view/zego/live_streaming.dart';
@@ -15,7 +15,7 @@ import 'package:tech_media/view/zego/video_confrence.dart';
 
 import '../zego/audio_room.dart';
 import '../zego/video_call.dart';
-import 'dash_check.dart';
+
 import 'homescreen.dart';
 import '../../res/color.dart';
 import '../../utils/routes/route_name.dart';
