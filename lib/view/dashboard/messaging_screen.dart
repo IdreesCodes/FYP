@@ -2,6 +2,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tech_media/view/chat/messaging_screen.dart';
 import 'package:tech_media/view_model/services/session_controller.dart';
@@ -18,6 +19,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
   String uId = '';
   String name = '';
   String username = '';
+  bool checker = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +39,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                   username = map['username'];
                   name = map['username'];
                   uId = SessionController().userId.toString();
+
                   return Container(
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
@@ -128,6 +131,10 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                                       .toString()) {
                                                 return Container();
                                               } else {
+                                                snapshot
+                                                    .child('profile')
+                                                    .value
+                                                    .toString();
                                                 return Card(
                                                   child: ListTile(
                                                     onTap: () {
@@ -152,18 +159,18 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                                       );
                                                     },
                                                     leading: CircleAvatar(
-                                                      backgroundImage:
-                                                          NetworkImage(snapshot
-                                                              .child('profile')
-                                                              .value
-                                                              .toString()),
-                                                    ),
+                                                        backgroundImage:
+                                                            NetworkImage(snapshot
+                                                                .child(
+                                                                    'profile')
+                                                                .value
+                                                                .toString())),
                                                     title: Text(
                                                       snapshot
                                                           .child('username')
                                                           .value
                                                           .toString(),
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontSize: 18,
                                                           fontWeight:
                                                               FontWeight.w500),
