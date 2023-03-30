@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:zego_uikit_prebuilt_live_streaming/zego_uikit_prebuilt_live_streaming.dart';
 
 import '../../res/color.dart';
+import '../../res/components/round_button.dart';
 
 //final String userID = Random().nextInt(900000 + 100000).toString();
 final user = FirebaseAuth.instance.currentUser;
@@ -24,9 +25,7 @@ class LiveStreaming extends StatefulWidget {
 class _LiveStreamingState extends State<LiveStreaming> {
   // final String userID = Random().nextInt(900000 + 100000).toString();
   // Generate Live Streaming ID with 6 digit length
-  final liveIDController = TextEditingController(
-    text: Random().nextInt(900000 + 100000).toString(),
-  );
+  final liveIDController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,30 +65,41 @@ class _LiveStreamingState extends State<LiveStreaming> {
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-              style: buttonStyle,
-              child: const Text(
-                'Start a Live',
-                style: TextStyle(),
-              ),
-              onPressed: () => jumpToLivePage(
-                context,
-                liveID: liveIDController.text,
-                isHost: true,
-              ),
+            RoundButton(
+              title: 'Start Live Streaming',
+              onPress: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => jumpToLivePage(
+                        context,
+                        liveID: liveIDController.text,
+                        isHost: true,
+                      ),
+                    ));
+              },
             ),
             const SizedBox(
               height: 16,
             ),
-            ElevatedButton(
-              style: buttonStyle,
-              child: const Text('Join a Live'),
-              onPressed: () => jumpToLivePage(
-                context,
-                liveID: liveIDController.text,
-                isHost: false,
-              ),
-            )
+            RoundButton(
+              title: 'Join Live',
+              onPress: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => jumpToLivePage(
+                        context,
+                        liveID: liveIDController.text,
+                        isHost: false,
+                      ),
+                    ));
+              },
+            ),
+
+            const SizedBox(
+              height: 16,
+            ),
           ],
         ),
       ),

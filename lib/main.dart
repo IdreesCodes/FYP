@@ -17,7 +17,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
 
-  print("Handling a background message: ${message.messageId}");
+  if (kDebugMode) {
+    print("Handling a background message: ${message.messageId}");
+  }
 }
 
 void main() async {
@@ -38,7 +40,7 @@ void main() async {
     announcement: false,
     badge: true,
     carPlay: false,
-    criticalAlert: false,
+    criticalAlert: true,
     provisional: false,
     sound: true,
   );

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animated_icons/icons8.dart';
 import 'package:lottie/lottie.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -68,6 +69,7 @@ class _DashboardScreenState extends State<DashboardScreen>
     return [
       PersistentBottomNavBarItem(
         onPressed: (context) {
+          HapticFeedback.mediumImpact();
           controller.jumpToTab(0);
           _menuController.reset();
           _menuController.forward();
@@ -81,6 +83,7 @@ class _DashboardScreenState extends State<DashboardScreen>
       PersistentBottomNavBarItem(
         activeColorPrimary: AppColors.primaryColor,
         onPressed: (context) {
+          HapticFeedback.heavyImpact();
           controller.jumpToTab(1);
           _videoController.reset();
           _videoController.forward();
@@ -94,6 +97,7 @@ class _DashboardScreenState extends State<DashboardScreen>
       PersistentBottomNavBarItem(
         activeColorPrimary: AppColors.primaryColor,
         onPressed: (context) {
+          HapticFeedback.heavyImpact();
           controller.jumpToTab(2);
           _settingController.reset();
           _settingController.forward();

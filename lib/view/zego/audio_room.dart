@@ -13,7 +13,7 @@ final userID = user?.uid;
 final displayName = user?.email;
 
 class AudioRoomScreen extends StatefulWidget {
-  AudioRoomScreen({
+  const AudioRoomScreen({
     Key? key,
   }) : super(key: key);
 
@@ -29,62 +29,67 @@ class _AudioRoomScreenState extends State<AudioRoomScreen> {
   Widget build(BuildContext context) {
     bool Host = false;
     return Scaffold(
-      body: SafeArea(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image(
-            image: AssetImage('assets/images/audio.png'),
-            width: MediaQuery.of(context).size.width * 0.90,
-          ),
-          Padding(
-            padding:
-                const EdgeInsets.only(left: 20.0, right: 20, bottom: 5, top: 0),
-            child: InputTextField(
-                myController: callingId,
-                focusNode: userNameFocusNode,
-                onFieldSubmittedValue: (value) {},
-                keyBoardType: TextInputType.emailAddress,
-                obscureText: false,
-                hint: 'Enter  Id',
-                onValidator: (value) {
-                  return value.isEmpty ? 'enter Id' : null;
-                }),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(18, 10, 18, 0),
-            child: RoundButton(
-              title: 'Join Call as host?',
-              onPress: () {
-                Host = true;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LivePage(
-                              roomID: callingId.text.toString(),
-                              isHost: Host,
-                            )));
-              },
+      body: SingleChildScrollView(
+        child: SafeArea(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 60.0),
+              child: Image(
+                image: const AssetImage('assets/images/audio.png'),
+                width: MediaQuery.of(context).size.width * 0.90,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(18, 10, 18, 0),
-            child: RoundButton(
-              title: 'Join Call as audience?',
-              onPress: () {
-                Host = true;
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => LivePage(
-                              roomID: callingId.text.toString(),
-                            )));
-              },
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 20.0, right: 20, bottom: 5, top: 0),
+              child: InputTextField(
+                  myController: callingId,
+                  focusNode: userNameFocusNode,
+                  onFieldSubmittedValue: (value) {},
+                  keyBoardType: TextInputType.emailAddress,
+                  obscureText: false,
+                  hint: 'Enter  Id',
+                  onValidator: (value) {
+                    return value.isEmpty ? 'enter Id' : null;
+                  }),
             ),
-          )
-        ],
-      )),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(18, 10, 18, 0),
+              child: RoundButton(
+                title: 'Join Call as host?',
+                onPress: () {
+                  Host = true;
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LivePage(
+                                roomID: callingId.text.toString(),
+                                isHost: Host,
+                              )));
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(18, 10, 18, 0),
+              child: RoundButton(
+                title: 'Join Call as audience?',
+                onPress: () {
+                  Host = true;
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LivePage(
+                                roomID: callingId.text.toString(),
+                              )));
+                },
+              ),
+            )
+          ],
+        )),
+      ),
     );
   }
 }
