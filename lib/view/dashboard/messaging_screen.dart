@@ -158,22 +158,32 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                                         withNavBar: false,
                                                       );
                                                     },
-                                                    leading: CircleAvatar(
-                                                        backgroundImage:
-                                                            NetworkImage(snapshot
-                                                                .child(
-                                                                    'profile')
-                                                                .value
-                                                                .toString())),
-                                                    title: Text(
-                                                      snapshot
-                                                          .child('username')
-                                                          .value
-                                                          .toString(),
-                                                      style: const TextStyle(
-                                                          fontSize: 18,
-                                                          fontWeight:
-                                                              FontWeight.w500),
+                                                    leading: Container(
+                                                      height: 50,
+                                                      width: 50,
+                                                      clipBehavior:
+                                                          Clip.hardEdge,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                200), // radius of 10green as background color
+                                                      ),
+                                                      child: snapshot
+                                                                  .child(
+                                                                      'profile')
+                                                                  .value
+                                                                  .toString() ==
+                                                              ""
+                                                          ? Image.asset(
+                                                              "assets/images/user.png")
+                                                          : Image.network(
+                                                              snapshot
+                                                                  .child(
+                                                                      'profile')
+                                                                  .value
+                                                                  .toString(),
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                     ),
                                                     subtitle: Text(snapshot
                                                         .child('email')
