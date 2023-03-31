@@ -38,12 +38,21 @@ class _ChatScreenState extends State<ChatScreen> {
           )
         ],
         leading: Padding(
-          padding: const EdgeInsets.only(left: 18.0),
-          child: CircleAvatar(
-              backgroundColor: Colors.transparent,
-              child: ClipOval(
-                child: Image.network(widget.image.toString()),
-              )),
+          padding: const EdgeInsets.all(10),
+          child: Container(
+              height: 50,
+              width: 50,
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                    200), // radius of 10green as background color
+              ),
+              child: widget.image == ""
+                  ? Image.asset("assets/images/user.png")
+                  : Image.network(
+                      widget.image,
+                      fit: BoxFit.cover,
+                    )),
         ),
       ),
       body: SafeArea(
@@ -60,12 +69,25 @@ class _ChatScreenState extends State<ChatScreen> {
                     itemBuilder: (context, index) {
                       if (index % 2 == 0) {
                         return Bubble(
-                          margin: const BubbleEdges.only(top: 10),
+                          margin: const BubbleEdges.only(top: 10, left: 100),
                           alignment: Alignment.topRight,
                           nip: BubbleNip.rightTop,
                           color: const Color.fromRGBO(225, 255, 199, 1.0),
-                          child:
-                              const Text('Idrees', textAlign: TextAlign.right),
+                          child: Column(
+                            children: const [
+                              Text(
+                                  'Muhammad Idrees Muhammad ali is the greatest men of 20 century Idrees Muhammad Idrees Muhammad Idrees',
+                                  textAlign: TextAlign.left),
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Text(
+                                  '10:20 PM',
+                                  style: TextStyle(fontSize: 10),
+                                  //textAlign: TextAlign.right
+                                ),
+                              ),
+                            ],
+                          ),
                         );
                       } else {
                         return Bubble(
@@ -144,7 +166,7 @@ class _ChatScreenState extends State<ChatScreen> {
       Utils.ToastMessage('Enter Message');
     } else {
       final timeStamp = DateTime.now().millisecondsSinceEpoch.toString();
-      ref.child(timeStamp).set({
+      ref.child(widget.receiverId + SessionController().userId.toString()).set({
         'isSeen': false,
         'message': messageController.text.toString(),
         'sender': SessionController().userId.toString(),
