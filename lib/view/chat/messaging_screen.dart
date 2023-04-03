@@ -1,5 +1,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tech_media/utils/utils.dart';
 import 'package:tech_media/view_model/services/session_controller.dart';
@@ -24,6 +26,24 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   DatabaseReference ref = FirebaseDatabase.instance.ref().child('Chat');
   final messageController = TextEditingController();
+  ScrollController scrollController = ScrollController();
+  getDate() {
+    DatabaseReference refe = FirebaseDatabase.instance.ref().child(
+        'Chat/${SessionController().userId.toString()}${widget.receiverId}');
+    refe.onValue.listen((DatabaseEvent event) {
+      final data = event.snapshot.value;
+      print("data in chat responce:");
+
+      print(data);
+    });
+  }
+
+  @override
+  void initState() {
+    getDate();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +51,8 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         elevation: 0,
         title: Text(widget.name.toString()),
-        actions: [
-          const Padding(
+        actions: const [
+          Padding(
             padding: EdgeInsets.all(8.0),
             child: Icon(Icons.menu_rounded),
           )
@@ -64,42 +84,47 @@ class _ChatScreenState extends State<ChatScreen> {
               height: 10,
             ),
             Expanded(
-                child: ListView.builder(
-                    itemCount: 100,
-                    itemBuilder: (context, index) {
-                      if (index % 2 == 0) {
-                        return Bubble(
-                          margin: const BubbleEdges.only(top: 10, left: 100),
-                          alignment: Alignment.topRight,
-                          nip: BubbleNip.rightTop,
-                          color: const Color.fromRGBO(225, 255, 199, 1.0),
-                          child: Column(
-                            children: const [
-                              Text(
-                                  'Muhammad Idrees Muhammad ali is the greatest men of 20 century Idrees Muhammad Idrees Muhammad Idrees',
-                                  textAlign: TextAlign.left),
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: Text(
-                                  '10:20 PM',
-                                  style: TextStyle(fontSize: 10),
-                                  //textAlign: TextAlign.right
-                                ),
-                              ),
-                            ],
+                child: FirebaseAnimatedList(
+              controller: scrollController,
+              query: FirebaseDatabase.instance.ref().child(
+                  'Chat/${SessionController().userId.toString()}${widget.receiverId}'),
+              itemBuilder: (context, snapshot, animation, index) {
+                if (SessionController().userId.toString() !=
+                    snapshot.child('sender').value.toString()) {
+                  return Bubble(
+                    margin: const BubbleEdges.only(top: 10),
+                    alignment: Alignment.topLeft,
+                    nip: BubbleNip.leftTop,
+                    child: Text(snapshot.child('message').value.toString()),
+                  );
+                } else {
+                  return Bubble(
+                    margin: const BubbleEdges.only(top: 10, left: 100),
+                    alignment: Alignment.topRight,
+                    nip: BubbleNip.rightTop,
+                    color: const Color.fromRGBO(225, 255, 199, 1.0),
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(snapshot.child('message').value.toString(),
+                              textAlign: TextAlign.left),
+                          Text(
+                            snapshot.child('time').value.toString(),
+                            style: TextStyle(fontSize: 10),
+                            textAlign: TextAlign.right,
+                            //textAlign: TextAlign.right
                           ),
-                        );
-                      } else {
-                        return Bubble(
-                          margin: const BubbleEdges.only(top: 10),
-                          alignment: Alignment.topLeft,
-                          nip: BubbleNip.leftTop,
-                          child: const Text('Irfan'),
-                        );
-                      }
-
-                      //Text(index.toString());
-                    })),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+              },
+            )),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
                 Expanded(
@@ -165,16 +190,38 @@ class _ChatScreenState extends State<ChatScreen> {
     if (messageController.text.isEmpty) {
       Utils.ToastMessage('Enter Message');
     } else {
-      final timeStamp = DateTime.now().millisecondsSinceEpoch.toString();
-      ref.child(widget.receiverId + SessionController().userId.toString()).set({
+      final timeStamp = DateTime.now();
+      String time = "${timeStamp.hour}:${timeStamp.minute}";
+
+      ref
+          .child(
+              "${SessionController().userId.toString()}${widget.receiverId}/${timeStamp.microsecondsSinceEpoch.toString()}")
+          .set({
         'isSeen': false,
         'message': messageController.text.toString(),
         'sender': SessionController().userId.toString(),
         'receiverId': widget.receiverId,
         'type': 'Text',
-        'time': timeStamp.toString()
+        'time': time,
       }).then((value) {
         messageController.clear();
+        scrollController.animateTo(scrollController.position.maxScrollExtent,
+            duration: const Duration(milliseconds: 150), curve: Curves.easeOut);
+      });
+      ref
+          .child(
+              "${widget.receiverId}${SessionController().userId.toString()}/${timeStamp.microsecondsSinceEpoch.toString()}")
+          .set({
+        'isSeen': false,
+        'message': messageController.text.toString(),
+        'sender': SessionController().userId.toString(),
+        'receiverId': widget.receiverId,
+        'type': 'Text',
+        'time': time,
+      }).then((value) {
+        messageController.clear();
+        scrollController.animateTo(scrollController.position.maxScrollExtent,
+            duration: const Duration(milliseconds: 150), curve: Curves.easeOut);
       });
     }
   }

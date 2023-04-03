@@ -36,6 +36,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasData) {
                   Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
+                  print(map);
                   username = map['username'];
                   name = map['username'];
                   uId = SessionController().userId.toString();
@@ -128,6 +129,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                                       .toString() ==
                                                   snapshot
                                                       .child('uid')
+                                                      .value
                                                       .toString()) {
                                                 return Container();
                                               } else {
@@ -185,6 +187,16 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                                               fit: BoxFit.cover,
                                                             ),
                                                     ),
+                                                    title: Text(
+                                                        snapshot
+                                                            .child('username')
+                                                            .value
+                                                            .toString(),
+                                                        style: const TextStyle(
+                                                            fontSize: 18,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500)),
                                                     subtitle: Text(snapshot
                                                         .child('email')
                                                         .value
