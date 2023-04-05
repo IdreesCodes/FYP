@@ -27,7 +27,7 @@ class InputTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
+      padding: const EdgeInsets.only(left: 12, bottom: 8.0, right: 12),
       child: TextFormField(
         controller: myController,
         focusNode: focusNode,
@@ -47,17 +47,17 @@ class InputTextField extends StatelessWidget {
               color: AppColors.primaryTextTextColor.withOpacity(0.8)),
           border: const OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.textFieldDefaultFocus),
-              borderRadius: BorderRadius.all(Radius.circular(8))),
+              borderRadius: BorderRadius.all(Radius.circular(5.5))),
           focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.secondaryColor),
-              borderRadius: BorderRadius.all(Radius.circular(8))),
+              borderRadius: BorderRadius.all(Radius.circular(5.5))),
           errorBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.alertColor),
-              borderRadius: BorderRadius.all(Radius.circular(8))),
+              borderRadius: BorderRadius.all(Radius.circular(5.5))),
           enabledBorder: const OutlineInputBorder(
               borderSide:
                   BorderSide(color: AppColors.textFieldDefaultBorderColor),
-              borderRadius: BorderRadius.all(Radius.circular(8))),
+              borderRadius: BorderRadius.all(Radius.circular(5.5))),
         ),
       ),
     );

@@ -36,6 +36,17 @@ class _LoginScreenState extends State<LoginScreen> {
     final height = MediaQuery.of(context).size.height * 1;
 
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        title: Text(
+          'Welcome',
+          style: Theme.of(context)
+              .textTheme
+              .headline6!
+              .copyWith(fontSize: 28, fontWeight: FontWeight.w600),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
@@ -45,19 +56,28 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: height * .05,
+                  height: height * .017,
                 ),
+
                 SvgPicture.asset(
-                  'assets/svg/login.svg',
+                  'assets/svg/login 1.svg',
                   height: 300,
                   width: 200,
                 ),
+                Text(
+                  'Login to Continue',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1!
+                      .copyWith(fontSize: 24, fontWeight: FontWeight.w200),
+                ),
+
                 // Lottie.asset('assets/lottie/login.json'),
                 Form(
                     key: _formKey,
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: height * .06, bottom: height * .01),
+                          top: height * .04, bottom: height * .01),
                       child: Column(
                         children: [
                           InputTextField(
@@ -86,23 +106,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     )),
-
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteName.forgotScreen);
-                    },
-                    child: Text(
-                      'Forgot password?',
-                      style: Theme.of(context).textTheme.headline2!.copyWith(
-                          fontSize: 13, decoration: TextDecoration.underline),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
                 ChangeNotifierProvider(
                   create: (_) => LoginController(),
                   child: Consumer<LoginController>(
@@ -120,24 +123,55 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 10, left: 15.0, right: 15.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, RouteName.forgotScreen);
+                          },
+                          child: Text(
+                            'Forgot password?',
+                            style:
+                                Theme.of(context).textTheme.headline1!.copyWith(
+                                      fontSize: 15,
+                                    ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 10, left: 15.0, right: 15.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, RouteName.signUpScreen);
+                          },
+                          child: Text(
+                            'New here! Signup',
+                            style:
+                                Theme.of(context).textTheme.headline1!.copyWith(
+                                      fontSize: 15,
+                                    ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
                 const SizedBox(
                   height: 18,
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteName.signUpScreen);
-                  },
-                  child: Text.rich(
-                    TextSpan(text: 'Don\'t have an account? ', children: [
-                      TextSpan(
-                        text: 'Signup',
-                        style: Theme.of(context).textTheme.headline2!.copyWith(
-                            fontSize: 13.5,
-                            decoration: TextDecoration.underline),
-                      ),
-                    ]),
-                  ),
-                )
               ],
             ),
           ),

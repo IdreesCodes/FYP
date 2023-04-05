@@ -42,6 +42,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        title: Text(
+          'Welcome',
+          style: Theme.of(context)
+              .textTheme
+              .headline6!
+              .copyWith(fontSize: 28, fontWeight: FontWeight.w600),
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -55,16 +62,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          SizedBox(
+                            height: height * .017,
+                          ),
                           SvgPicture.asset(
-                            'assets/svg/signup.svg',
+                            'assets/svg/signup 1.svg',
                             height: 300,
                             width: 200,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 18.0),
+                            child: Text(
+                              'New Here! Sign Up to Continue',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline1!
+                                  .copyWith(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w200),
+                            ),
                           ),
                           Form(
                               key: _formKey,
                               child: Padding(
                                 padding: EdgeInsets.only(
-                                    top: height * .06, bottom: height * .01),
+                                    top: height * .001, bottom: height * .001),
                                 child: Column(
                                   children: [
                                     InputTextField(
@@ -81,7 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               : null;
                                         }),
                                     SizedBox(
-                                      height: height * 0.01,
+                                      height: height * 0.007,
                                     ),
                                     InputTextField(
                                         myController: emailController,
@@ -102,7 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                               : null;
                                         }),
                                     SizedBox(
-                                      height: height * 0.01,
+                                      height: height * 0.007,
                                     ),
                                     InputTextField(
                                         myController: passwordController,
@@ -120,11 +142,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ],
                                 ),
                               )),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const SizedBox(
-                            height: 30,
+                          SizedBox(
+                            height: height * 0.02,
                           ),
                           RoundButton(
                             loading: provider.loading,
@@ -149,20 +168,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Navigator.pushNamed(context, RouteName.loginView);
                             },
                             child: Text.rich(
-                              TextSpan(
-                                  text: 'Already have an account? ',
-                                  children: [
-                                    TextSpan(
-                                      text: 'Login',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline2!
-                                          .copyWith(
-                                              fontSize: 15,
-                                              decoration:
-                                                  TextDecoration.underline),
-                                    ),
-                                  ]),
+                              TextSpan(text: 'Already a member? ', children: [
+                                TextSpan(
+                                  text: 'Login',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline1!
+                                      .copyWith(
+                                          fontSize: 15,
+                                          decoration: TextDecoration.underline),
+                                ),
+                              ]),
                             ),
                           )
                         ],

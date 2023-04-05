@@ -31,6 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height * 1;
     return Scaffold(
         resizeToAvoidBottomInset: true,
         body: ChangeNotifierProvider(
@@ -52,115 +53,130 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         } else if (snapshot.hasData) {
                           Map<dynamic, dynamic> map =
                               snapshot.data.snapshot.value;
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                          return Stack(
+                            alignment: Alignment.topCenter,
                             children: [
-                              const SizedBox(
-                                height: 20,
+                              Image.asset(
+                                'assets/images/Mask group.png',
+                                fit: BoxFit.fill,
                               ),
-                              Stack(
-                                alignment: Alignment.center,
+                              Positioned(
+                                top: 70,
+                                child: Text(
+                                  'Profile Screen',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headline6!
+                                      .copyWith(
+                                          fontSize: 28,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white),
+                                ),
+                              ),
+                              Positioned(
+                                top: 120,
+                                left: 120,
+                                child: Container(
+                                  height: 120,
+                                  width: 120,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          color: Colors.white, width: 2.3)),
+                                  child: InkWell(
+                                      onTap: () {
+                                        provider.pickImage(context);
+                                      },
+                                      child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          child: provider.image == null
+                                              ? map['profile'].toString() == ""
+                                                  ? const Icon(
+                                                      Icons.person_2_outlined,
+                                                      size: 30,
+                                                    )
+                                                  : Image(
+                                                      fit: BoxFit.cover,
+                                                      image: NetworkImage(
+                                                          map["profile"]
+                                                              .toString()),
+                                                      loadingBuilder: (context,
+                                                          child,
+                                                          loadingProgress) {
+                                                        if (loadingProgress ==
+                                                            null) return child;
+                                                        return const Center(
+                                                            child:
+                                                                CircularProgressIndicator());
+                                                      },
+                                                      errorBuilder: (
+                                                        context,
+                                                        object,
+                                                        stack,
+                                                      ) {
+                                                        return Container(
+                                                            child: const Icon(
+                                                          Icons.error_outline,
+                                                          color: AppColors
+                                                              .alertColor,
+                                                        ));
+                                                      })
+                                              : Image.file(
+                                                  File(provider.image!.path)
+                                                      .absolute))),
+                                ),
+                              ),
+                              const Positioned(
+                                top: 80,
+                                left: 218,
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 120.0),
+                                  child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      radius: 11,
+                                      child: Image(
+                                          image: AssetImage(
+                                              'assets/images/Photo Editor.png'))),
+                                ),
+                              ),
+                              Column(
                                 children: [
                                   SizedBox(
-                                    height: 220,
-                                    width: 180,
-                                    child: Lottie.asset(
-                                        'assets/lottie/circle.json'),
+                                    height: 245,
                                   ),
-                                  Container(
-                                    height: 120,
-                                    width: 120,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: AppColors.primaryColor,
-                                            width: 1.2)),
-                                    child: InkWell(
-                                        onTap: () {
-                                          provider.pickImage(context);
-                                        },
-                                        child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(100),
-                                            child: provider.image == null
-                                                ? map['profile'].toString() ==
-                                                        ""
-                                                    ? const Icon(
-                                                        Icons.person_2_outlined,
-                                                        size: 30,
-                                                      )
-                                                    : Image(
-                                                        fit: BoxFit.cover,
-                                                        image: NetworkImage(
-                                                            map["profile"]
-                                                                .toString()),
-                                                        loadingBuilder: (context,
-                                                            child,
-                                                            loadingProgress) {
-                                                          if (loadingProgress ==
-                                                              null)
-                                                            return child;
-                                                          return const Center(
-                                                              child:
-                                                                  CircularProgressIndicator());
-                                                        },
-                                                        errorBuilder: (
-                                                          context,
-                                                          object,
-                                                          stack,
-                                                        ) {
-                                                          return Container(
-                                                              child: const Icon(
-                                                            Icons.error_outline,
-                                                            color: AppColors
-                                                                .alertColor,
-                                                          ));
-                                                        })
-                                                : Image.file(
-                                                    File(provider.image!.path)
-                                                        .absolute))),
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.only(top: 120.0),
-                                    child: CircleAvatar(
-                                      backgroundColor: AppColors.primaryColor,
-                                      radius: 11,
-                                      child: Icon(
-                                        Icons.add,
-                                        size: 15,
-                                        color: Colors.black87,
-                                      ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      provider.userNameDialogAlert(
+                                          context, map['username']);
+                                    },
+                                    child: ReUseAbleRow(
+                                      title: 'Username',
+                                      imageData: Image.asset(
+                                          'assets/images/Person.png'),
+                                      value: map['username'],
                                     ),
-                                  )
+                                  ),
+                                  ReUseAbleRow(
+                                      title: 'Email',
+                                      imageData: Image.asset(
+                                          'assets/images/Photo Editor.png'),
+                                      value: map['email']),
+                                  GestureDetector(
+                                    onTap: () {
+                                      provider.showPhoneDialogAlert(
+                                          context, map['phone']);
+                                    },
+                                    child: ReUseAbleRow(
+                                        title: 'Phone',
+                                        imageData: Image.asset(
+                                            'assets/images/Shake Phone.png'),
+                                        value: map['phone']),
+                                  ),
+                                  SizedBox(
+                                    height: 50,
+                                  ),
                                 ],
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  provider.userNameDialogAlert(
-                                      context, map['username']);
-                                },
-                                child: ReUseAbleRow(
-                                    title: 'Username',
-                                    iconData: Icons.person_outline,
-                                    value: map['username']),
-                              ),
-                              ReUseAbleRow(
-                                  title: 'Email',
-                                  iconData: Icons.mail_outline_outlined,
-                                  value: map['email']),
-                              GestureDetector(
-                                onTap: () {
-                                  provider.showPhoneDialogAlert(
-                                      context, map['phone']);
-                                },
-                                child: ReUseAbleRow(
-                                    title: 'Phone',
-                                    iconData: Icons.phone_callback_rounded,
-                                    value: map['phone']),
-                              ),
-                              SizedBox(
-                                height: 50,
                               ),
                             ],
                           );
@@ -181,25 +197,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
 class ReUseAbleRow extends StatelessWidget {
   final String title, value;
-  final IconData iconData;
-  const ReUseAbleRow({
-    Key? key,
-    required this.title,
-    required this.iconData,
-    required this.value,
-  }) : super(key: key);
+
+  final Image imageData;
+  const ReUseAbleRow(
+      {Key? key,
+      required this.title,
+      required this.value,
+      required this.imageData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ListTile(
-          title: Text(title),
-          leading: Icon(iconData),
-          trailing: Text(value),
+        Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Container(
+            decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                border: Border.all(color: Colors.black, width: 0.7),
+                borderRadius: BorderRadius.circular(7)),
+            child: ListTile(
+              title: Text(title),
+              leading: imageData,
+              trailing: Text(value),
+            ),
+          ),
         ),
-        Divider(
-          color: AppColors.dividedColor.withOpacity(0.4),
+        SizedBox(
+          height: 5,
         )
       ],
     );

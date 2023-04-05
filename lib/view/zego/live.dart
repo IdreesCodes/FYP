@@ -37,7 +37,27 @@ class _LiveStState extends State<LiveSt> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 1,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image(
+                image: AssetImage('assets/images/Back.png'),
+              )),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: Text(
+            'Live Streaming',
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(fontSize: 24, fontWeight: FontWeight.w600),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -85,6 +105,16 @@ class _LiveStState extends State<LiveSt> {
                     isHost: false,
                   ),
                 ),
+                // ElevatedButton(
+                //   style: ButtonStyle(),
+                //   child: Text(
+                //     'Watch Live Stream',
+                //   ),
+                //   onPressed: () => _jumpToLivePage(
+                //     liveID: streamIdController.text,
+                //     isHost: false,
+                //   ),
+                // ),
               ],
             ),
             const Spacer(flex: 2),

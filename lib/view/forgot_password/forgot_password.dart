@@ -38,6 +38,26 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image(
+                image: AssetImage('assets/images/Back.png'),
+              )),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: Text(
+            'Recover Account',
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(fontSize: 24, fontWeight: FontWeight.w600),
+          ),
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -48,17 +68,19 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: height * .05,
+                  height: height * .017,
                 ),
                 SvgPicture.asset(
-                  'assets/svg/forget.svg',
+                  'assets/svg/forget 1.svg',
                   height: 300,
                   width: 200,
                 ),
                 Text(
-                  'Enter Email To Recover The Password',
-                  style: Theme.of(context).textTheme.subtitle1,
-                  textAlign: TextAlign.center,
+                  'Please enter your Email',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1!
+                      .copyWith(fontSize: 22, fontWeight: FontWeight.w200),
                 ),
                 Form(
                     key: _formKey,
@@ -77,7 +99,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                                 return value.isEmpty ? 'enter email' : null;
                               }),
                           SizedBox(
-                            height: height * 0.05,
+                            height: height * 0.02,
                           ),
                         ],
                       ),
