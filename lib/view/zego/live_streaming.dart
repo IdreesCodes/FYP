@@ -32,6 +32,29 @@ class _LiveStreamState extends State<LiveStream> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image(
+                image: AssetImage('assets/images/Back.png'),
+              )),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: Text(
+            'Audio Room',
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(fontSize: 24, fontWeight: FontWeight.w600),
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 24,

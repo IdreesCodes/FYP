@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primaryColor = Color(0xff58ee4a);
+  static const Color primaryColor = Color(0xff58EE4A);
   static const Color secondaryColor = Color.fromRGBO(19, 103, 33, 1);
 
   static const Color primaryTextTextColor = Color(0xff242424);
@@ -21,6 +21,7 @@ class AppColors {
 
   static const Color alertColor = Color(0xffff0222);
   static const Color whiteColor = Color(0xffffffff);
+  static const Color blackColor = Color.fromARGB(255, 67, 67, 67);
 
   static const Color focusUnderLineColor = Color(0xff373737);
   static const Color dividedColor = Color(0xff373737);
