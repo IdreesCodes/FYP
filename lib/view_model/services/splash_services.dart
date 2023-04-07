@@ -19,11 +19,15 @@ class SplashServices {
     final user = auth.currentUser;
     if (user != null) {
       SessionController().userId = user.uid.toString();
-      Timer(const Duration(seconds: 3),
-          () => Navigator.pushNamed(context, RouteName.dashboardScreen));
+      Timer(
+          const Duration(seconds: 3),
+          () => Navigator.pushNamedAndRemoveUntil(context,
+              RouteName.dashboardScreen, (Route<dynamic> route) => false));
     } else {
-      Timer(const Duration(seconds: 3),
-          () => Navigator.pushNamed(context, RouteName.loginView));
+      Timer(
+          const Duration(seconds: 3),
+          () => Navigator.pushNamedAndRemoveUntil(
+              context, RouteName.loginView, (Route<dynamic> route) => false));
     }
   }
 }

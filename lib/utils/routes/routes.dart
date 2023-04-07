@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_media/utils/routes/route_name.dart';
 import 'package:tech_media/view/dashboard/dashboard_screen.dart';
+import 'package:tech_media/view/dashboard/search_user.dart';
 import 'package:tech_media/view/login/login_screen.dart';
 import 'package:tech_media/view/signup/sign_up_screen.dart';
 
@@ -13,6 +14,9 @@ class Routes {
     switch (settings.name) {
       case RouteName.splashScreen:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+
+      case RouteName.searchUser:
+        return MaterialPageRoute(builder: (_) => SearchUser());
 
       case RouteName.loginView:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
