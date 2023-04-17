@@ -105,6 +105,8 @@ class _DashboardScreenState extends State<DashboardScreen>
         screens: _buildScreen(),
         items: _navBarItem(),
         backgroundColor: Colors.white,
+        padding: NavBarPadding.all(6),
+        margin: EdgeInsets.only(top: 5),
         decoration: NavBarDecoration(
           borderRadius: BorderRadius.circular(5),
         ),

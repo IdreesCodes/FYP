@@ -609,89 +609,55 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.24):
     - BoringSSL-GRPC/Interface (= 0.0.24)
   - BoringSSL-GRPC/Interface (0.0.24)
-  - cloud_firestore (4.4.4):
-    - Firebase/Firestore (= 10.3.0)
+  - cloud_firestore (4.5.0):
+    - Firebase/Firestore (= 10.7.0)
     - firebase_core
     - Flutter
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - DKImagePickerController/Core (4.3.4):
-    - DKImagePickerController/ImageDataManager
-    - DKImagePickerController/Resource
-  - DKImagePickerController/ImageDataManager (4.3.4)
-  - DKImagePickerController/PhotoGallery (4.3.4):
-    - DKImagePickerController/Core
-    - DKPhotoGallery
-  - DKImagePickerController/Resource (4.3.4)
-  - DKPhotoGallery (0.0.17):
-    - DKPhotoGallery/Core (= 0.0.17)
-    - DKPhotoGallery/Model (= 0.0.17)
-    - DKPhotoGallery/Preview (= 0.0.17)
-    - DKPhotoGallery/Resource (= 0.0.17)
-    - SDWebImage
-    - SwiftyGif
-  - DKPhotoGallery/Core (0.0.17):
-    - DKPhotoGallery/Model
-    - DKPhotoGallery/Preview
-    - SDWebImage
-    - SwiftyGif
-  - DKPhotoGallery/Model (0.0.17):
-    - SDWebImage
-    - SwiftyGif
-  - DKPhotoGallery/Preview (0.0.17):
-    - DKPhotoGallery/Model
-    - DKPhotoGallery/Resource
-    - SDWebImage
-    - SwiftyGif
-  - DKPhotoGallery/Resource (0.0.17):
-    - SDWebImage
-    - SwiftyGif
-  - file_picker (0.0.1):
-    - DKImagePickerController/PhotoGallery
-    - Flutter
-  - Firebase/Auth (10.3.0):
+  - Firebase/Auth (10.7.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 10.3.0)
-  - Firebase/CoreOnly (10.3.0):
-    - FirebaseCore (= 10.3.0)
-  - Firebase/Database (10.3.0):
+    - FirebaseAuth (~> 10.7.0)
+  - Firebase/CoreOnly (10.7.0):
+    - FirebaseCore (= 10.7.0)
+  - Firebase/Database (10.7.0):
     - Firebase/CoreOnly
-    - FirebaseDatabase (~> 10.3.0)
-  - Firebase/Firestore (10.3.0):
+    - FirebaseDatabase (~> 10.7.0)
+  - Firebase/Firestore (10.7.0):
     - Firebase/CoreOnly
-    - FirebaseFirestore (~> 10.3.0)
-  - Firebase/Messaging (10.3.0):
+    - FirebaseFirestore (~> 10.7.0)
+  - Firebase/Messaging (10.7.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 10.3.0)
-  - Firebase/Storage (10.3.0):
+    - FirebaseMessaging (~> 10.7.0)
+  - Firebase/Storage (10.7.0):
     - Firebase/CoreOnly
-    - FirebaseStorage (~> 10.3.0)
-  - firebase_auth (4.2.10):
-    - Firebase/Auth (= 10.3.0)
+    - FirebaseStorage (~> 10.7.0)
+  - firebase_auth (4.4.0):
+    - Firebase/Auth (= 10.7.0)
     - firebase_core
     - Flutter
-  - firebase_core (2.7.1):
-    - Firebase/CoreOnly (= 10.3.0)
+  - firebase_core (2.9.0):
+    - Firebase/CoreOnly (= 10.7.0)
     - Flutter
-  - firebase_database (10.0.15):
-    - Firebase/Database (= 10.3.0)
+  - firebase_database (10.1.0):
+    - Firebase/Database (= 10.7.0)
     - firebase_core
     - Flutter
-  - firebase_messaging (14.2.6):
-    - Firebase/Messaging (= 10.3.0)
+  - firebase_messaging (14.4.0):
+    - Firebase/Messaging (= 10.7.0)
     - firebase_core
     - Flutter
-  - firebase_storage (11.0.15):
-    - Firebase/Storage (= 10.3.0)
+  - firebase_storage (11.1.0):
+    - Firebase/Storage (= 10.7.0)
     - firebase_core
     - Flutter
   - FirebaseAppCheckInterop (10.7.0)
-  - FirebaseAuth (10.3.0):
+  - FirebaseAuth (10.7.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
     - GoogleUtilities/Environment (~> 7.8)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
   - FirebaseAuthInterop (10.7.0)
-  - FirebaseCore (10.3.0):
+  - FirebaseCore (10.7.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/Logger (~> 7.8)
@@ -699,10 +665,10 @@ PODS:
     - FirebaseCore (~> 10.0)
   - FirebaseCoreInternal (10.7.0):
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseDatabase (10.3.0):
+  - FirebaseDatabase (10.7.0):
     - FirebaseCore (~> 10.0)
     - leveldb-library (~> 1.22)
-  - FirebaseFirestore (10.3.0):
+  - FirebaseFirestore (10.7.0):
     - abseil/algorithm (~> 1.20211102.0)
     - abseil/base (~> 1.20211102.0)
     - abseil/container/flat_hash_map (~> 1.20211102.0)
@@ -720,7 +686,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebaseMessaging (10.3.0):
+  - FirebaseMessaging (10.7.0):
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
     - GoogleDataTransport (~> 9.2)
@@ -729,7 +695,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - FirebaseStorage (10.3.0):
+  - FirebaseStorage (10.7.0):
     - FirebaseAppCheckInterop (~> 10.0)
     - FirebaseAuthInterop (~> 10.0)
     - FirebaseCore (~> 10.0)
@@ -845,38 +811,31 @@ PODS:
   - permission_handler_apple (9.0.4):
     - Flutter
   - PromisesObjC (2.2.0)
-  - SDWebImage (5.15.5):
-    - SDWebImage/Core (= 5.15.5)
-  - SDWebImage/Core (5.15.5)
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - SwiftyGif (5.4.4)
   - Toast (4.0.0)
-  - video_player_avfoundation (0.0.1):
-    - Flutter
   - wakelock (0.0.1):
     - Flutter
   - zego_express_engine (3.2.1):
     - Flutter
     - ZegoExpressEngine (= 3.2.1)
-  - zego_zim (2.6.0):
+  - zego_zim (2.7.1):
     - Flutter
-    - ZIM (= 2.6.0)
+    - ZIM (= 2.7.1)
   - zego_zpns (2.2.0):
     - Flutter
-    - ZPNs (= 2.0.1)
+    - ZPNs (= 2.1.0)
   - ZegoExpressEngine (3.2.1)
-  - ZIM (2.6.0)
-  - ZIPFoundation (0.9.16)
-  - ZPNs (2.0.1)
+  - ZIM (2.7.1)
+  - ZIPFoundation (0.9.11)
+  - ZPNs (2.1.0)
 
 DEPENDENCIES:
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
   - awesome_notifications (from `.symlinks/plugins/awesome_notifications/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
-  - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
@@ -892,7 +851,6 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
-  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
   - wakelock (from `.symlinks/plugins/wakelock/ios`)
   - zego_express_engine (from `.symlinks/plugins/zego_express_engine/ios`)
   - zego_zim (from `.symlinks/plugins/zego_zim/ios`)
@@ -902,8 +860,6 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
-    - DKImagePickerController
-    - DKPhotoGallery
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
@@ -927,8 +883,6 @@ SPEC REPOS:
     - Libuv-gRPC
     - nanopb
     - PromisesObjC
-    - SDWebImage
-    - SwiftyGif
     - Toast
     - ZegoExpressEngine
     - ZIM
@@ -944,8 +898,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/awesome_notifications/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
-  file_picker:
-    :path: ".symlinks/plugins/file_picker/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
@@ -976,8 +928,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
-  video_player_avfoundation:
-    :path: ".symlinks/plugins/video_player_avfoundation/ios"
   wakelock:
     :path: ".symlinks/plugins/wakelock/ios"
   zego_express_engine:
@@ -993,27 +943,24 @@ SPEC CHECKSUMS:
   audioplayers_darwin: 877d9a4d06331c5c374595e46e16453ac7eafa40
   awesome_notifications: d63d9a25f126860f9a600850d99772237895b3ba
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
-  cloud_firestore: 612a89fe1210990e2ba642b850e8faf7d393eedd
-  DKImagePickerController: b512c28220a2b8ac7419f21c491fc8534b7601ac
-  DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
-  file_picker: ce3938a0df3cc1ef404671531facef740d03f920
-  Firebase: f92fc551ead69c94168d36c2b26188263860acd9
-  firebase_auth: e94093901bee37bdba241fd8647c1d3ea6f55c8b
-  firebase_core: 1ae9f9aa76e6e1edc14fb181637ad466fd6c6fa4
-  firebase_database: bd5b62dcc2cf4f8416cbb27aac830e2742a96338
-  firebase_messaging: f8c01f8b540feb4196e8dbe45ae17534747d779d
-  firebase_storage: 95642d09600371e3bcfeec7cb8e53940d84fa9d4
+  cloud_firestore: 84f58b426bd8d21a22c4b19d9d18028fc4ff3eb1
+  Firebase: 0219acf760880eeec8ce479895bd7767466d9f81
+  firebase_auth: 5984ebaf5463319e304ab1c0966b06994bd1c69a
+  firebase_core: d85432877e814811e040e7659f9c82faeab66e04
+  firebase_database: 7dfac1ef83539a3716784b11f4d72d077c3464c2
+  firebase_messaging: 45c0514ca78426630338a42fb7b55af962c7ccd2
+  firebase_storage: 3419feab3ca832a07bdff5307477e0b9d20eb5f8
   FirebaseAppCheckInterop: 8e907eea79958960a8bd2058e067f31e03a7914b
-  FirebaseAuth: 0e415d29d846c1dce2fb641e46f35e9888d9bec6
+  FirebaseAuth: dd64c01631df724b09f33e584625775c52f7d71f
   FirebaseAuthInterop: 46201190fe90ef1f581513eb0f9fa3d7820e7d6d
-  FirebaseCore: 988754646ab3bd4bdcb740f1bfe26b9f6c0d5f2a
+  FirebaseCore: e317665b9d744727a97e623edbbed009320afdd7
   FirebaseCoreExtension: f17247ba8c61e4d3c8d136b5e2de3cb4ac6a85b6
   FirebaseCoreInternal: 8845798510aae74703467480f71ac613788d0696
-  FirebaseDatabase: d0732ba8aece0eccfa0cfb3ef540e7ba6fa1c6a6
-  FirebaseFirestore: 244f71ff14ef44f39e00b44d356eac708ce03103
+  FirebaseDatabase: 06195bac336b5e4c893ec04a111631a4cdb00178
+  FirebaseFirestore: 3963a6edd1c84b4748dab3e2c62624a29d03eca1
   FirebaseInstallations: 59c0e4c7a816a0f76710d83f77e5369b3e45eb96
-  FirebaseMessaging: e345b219fd15d325f0cf2fef28cb8ce00d851b3f
-  FirebaseStorage: 0efbff0ac978981866d89804191688ae50d64033
+  FirebaseMessaging: ac9062bcc35ed56e15a0241d8fd317022499baf8
+  FirebaseStorage: 4841efa304543e1f9e4ca116c559c7a1ea2a9d0f
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   flutter_logs: 5d0dca26963e0f30b11a995a764744ef77d5d428
@@ -1034,20 +981,17 @@ SPEC CHECKSUMS:
   path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
   permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
-  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  SwiftyGif: 93a1cc87bf3a51916001cf8f3d63835fb64c819f
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  video_player_avfoundation: 81e49bb3d9fb63dccf9fa0f6d877dc3ddbeac126
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
   zego_express_engine: c468ac6141317af1e0ed41c5f65893bd0b62e109
-  zego_zim: 66dc3803b70b6a28aa040b91da493ec84c63dd91
-  zego_zpns: e0fc96e07ad5bb4bbe2f24ed7b17eae999f74690
+  zego_zim: 4e72278879017951f270f5cbbefd7343ea44ec8c
+  zego_zpns: 749e132d6c6b836e83cb4b748101e489f99de4da
   ZegoExpressEngine: 882450f6f141e13847464b010cd7d200b3e4ffac
-  ZIM: 6b320ccd4d189f522192031c0a923150283c2c9c
-  ZIPFoundation: d170fa8e270b2a32bef9dcdcabff5b8f1a5deced
-  ZPNs: 76102346942e8337b4189ce64083a96d79cab2a9
+  ZIM: 70617c39c931038adc87bbe1f4aee3c80bbc997d
+  ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
+  ZPNs: 7e3b073a97f3a7d9bbf77d76c94c4f592ab9aa2c
 
-PODFILE CHECKSUM: ce13d36744da294d67f8e460dbb7aed7c09bd7f4
+PODFILE CHECKSUM: 21b64fbb12492d731c9be90cbe0f2d328bef4b49
 
 COCOAPODS: 1.12.0

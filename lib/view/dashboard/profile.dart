@@ -4,8 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
-import 'package:tech_media/res/components/round_button.dart';
+
+import 'package:tech_media/view/login/login_screen.dart';
 import 'package:tech_media/view_model/services/profile/profile_controller.dart';
 
 import '../../res/color.dart';
@@ -20,6 +22,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  void signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   final ref = FirebaseDatabase.instance.ref('Users');
 
   String? check = SessionController().userId;
@@ -40,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             builder: (context, provider, child) {
               return SafeArea(
                 child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: StreamBuilder(
                       stream: ref
                           .child(SessionController().userId.toString())
@@ -56,9 +62,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           return Stack(
                             alignment: Alignment.topCenter,
                             children: [
-                              Image.asset(
-                                'assets/images/Mask group.png',
-                                fit: BoxFit.fill,
+                              Container(
+                                child: Image.asset(
+                                  'assets/images/Mask group.png',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                               Positioned(
                                 top: 70,
@@ -140,43 +148,121 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               'assets/images/Photo Editor.png'))),
                                 ),
                               ),
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height: 245,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      provider.userNameDialogAlert(
-                                          context, map['username']);
-                                    },
-                                    child: ReUseAbleRow(
-                                      title: 'Username',
-                                      imageData: Image.asset(
-                                          'assets/images/Person.png'),
-                                      value: map['username'],
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 16.0,
+                                  right: 16,
+                                ),
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 265,
                                     ),
-                                  ),
-                                  ReUseAbleRow(
-                                      title: 'Email',
-                                      imageData: Image.asset(
-                                          'assets/images/Photo Editor.png'),
-                                      value: map['email']),
-                                  GestureDetector(
-                                    onTap: () {
-                                      provider.showPhoneDialogAlert(
-                                          context, map['phone']);
-                                    },
-                                    child: ReUseAbleRow(
-                                        title: 'Phone',
+                                    GestureDetector(
+                                      onTap: () {
+                                        provider.userNameDialogAlert(
+                                            context, map['username']);
+                                      },
+                                      child: ReUseAbleRow(
+                                        title: 'Username',
+                                        imageData: Image.asset(
+                                            'assets/images/Person.png'),
+                                        value: map['username'],
+                                      ),
+                                    ),
+                                    ReUseAbleRow(
+                                        title: 'Email',
                                         imageData: Image.asset(
                                             'assets/images/Shake Phone.png'),
-                                        value: map['phone']),
-                                  ),
-                                  SizedBox(
-                                    height: 50,
-                                  ),
-                                ],
+                                        value: map['email']),
+                                    GestureDetector(
+                                      onTap: () {
+                                        provider.showPhoneDialogAlert(
+                                            context, map['phone']);
+                                      },
+                                      child: ReUseAbleRow(
+                                          title: 'Phone',
+                                          imageData: Image.asset(
+                                              'assets/images/Group Message.png'),
+                                          value: map['phone']),
+                                    ),
+                                    const SizedBox(
+                                      height: 120,
+                                    ),
+                                    const Text('Comtech All Rights Reserved'),
+                                    const Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 12.0,
+                                        right: 12,
+                                      ),
+                                      child: Divider(
+                                        height: 1,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        signOut();
+                                        PersistentNavBarNavigator.pushNewScreen(
+                                          context,
+                                          screen: LoginScreen(),
+                                          withNavBar: false,
+                                        );
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 12.0, right: 12, top: 15),
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                              color: Colors.red,
+                                              borderRadius:
+                                                  BorderRadius.circular(7)),
+                                          child: Center(
+                                              child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 8.0,
+                                                    top: 20,
+                                                    bottom: 14,
+                                                    right: 4),
+                                                child: Image.asset(
+                                                    'assets/images/Vector.png'),
+                                              ),
+                                              Text(
+                                                'Logout',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headline2!
+                                                    .copyWith(
+                                                        fontSize: 16,
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        letterSpacing: 1.5),
+                                              ),
+                                            ],
+                                          )),
+                                        ),
+                                      ),
+                                    ),
+                                    // TextFormField(
+                                    //   controller: controller,
+                                    //   decoration: InputDecoration(
+                                    //       border: OutlineInputBorder(
+                                    //         borderRadius:
+                                    //             BorderRadius.circular(10.0),
+                                    //       ),
+                                    //       filled: true,
+                                    //       fillColor: Colors.white,
+                                    //       hintText: 'Change Password'),
+                                    // ),
+                                  ],
+                                ),
                               ),
                             ],
                           );
@@ -219,12 +305,15 @@ class ReUseAbleRow extends StatelessWidget {
                 borderRadius: BorderRadius.circular(7)),
             child: ListTile(
               title: Text(title),
-              leading: imageData,
+              leading: Padding(
+                padding: const EdgeInsets.fromLTRB(2, 15, 0, 15),
+                child: imageData,
+              ),
               trailing: Text(value),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         )
       ],

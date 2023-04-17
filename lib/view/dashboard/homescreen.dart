@@ -92,7 +92,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               Expanded(
                                 child: Container(
                                   decoration: const BoxDecoration(
-                                    color: Colors.white,
+                                    color: Colors.black,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/groupBG.png')),
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(32.0),
                                       topRight: Radius.circular(32.0),
@@ -108,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         const Text(
-                                          'Your feed',
+                                          'Your ',
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 24.0,
@@ -123,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             itemCount: 10,
                                             itemBuilder: (BuildContext context,
                                                 int index) {
+                                              print('pressed');
                                               return ListTile(
                                                 leading: const CircleAvatar(
                                                   backgroundColor: AppColors

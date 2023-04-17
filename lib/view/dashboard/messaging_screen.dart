@@ -43,16 +43,7 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                 uId = SessionController().userId.toString();
 
                 return Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Colors.white,
-                        Colors.black,
-                      ],
-                    ),
-                  ),
+                  decoration: const BoxDecoration(),
                   child: SafeArea(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,21 +52,21 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                           height: 30,
                         ),
                         const Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 24.0,
+                          padding: EdgeInsets.only(
+                            left: 130.0,
                           ),
                           child: Text(
-                            'Welcome back,',
+                            'Welcome back',
                             style: TextStyle(
-                              color: Colors.black45,
-                              fontSize: 24.0,
+                              color: Colors.black,
+                              fontSize: 28.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 24.0,
+                            horizontal: 130.0,
                           ),
                           child: Text(
                             username,
@@ -91,8 +82,13 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                         ),
                         Expanded(
                           child: Container(
+                            width: 400,
                             decoration: const BoxDecoration(
                               color: Colors.white,
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/groupBG.png'),
+                                  fit: BoxFit.fitWidth),
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(32.0),
                                 topRight: Radius.circular(32.0),
@@ -107,11 +103,11 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Padding(
-                                    padding: EdgeInsets.only(left: 13.0),
+                                    padding: EdgeInsets.only(left: 26.0),
                                     child: Text(
-                                      'Your Feed',
+                                      'Recent Feed',
                                       style: TextStyle(
-                                        color: Colors.black,
+                                        color: Colors.white,
                                         fontSize: 24.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -138,68 +134,106 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                                                   .child('profile')
                                                   .value
                                                   .toString();
-                                              return Card(
-                                                child: ListTile(
-                                                  onTap: () {
-                                                    PersistentNavBarNavigator
-                                                        .pushNewScreen(
-                                                      context,
-                                                      screen: ChatScreen(
-                                                        name: snapshot
-                                                            .child('username')
-                                                            .value
-                                                            .toString(),
-                                                        image: snapshot
-                                                            .child('profile')
-                                                            .value
-                                                            .toString(),
-                                                        receiverId: snapshot
-                                                            .child('uid')
-                                                            .value
-                                                            .toString(),
-                                                      ),
-                                                      withNavBar: false,
-                                                    );
-                                                  },
-                                                  leading: Container(
-                                                    height: 50,
-                                                    width: 50,
-                                                    clipBehavior: Clip.hardEdge,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              200), // radius of 10green as background color
-                                                    ),
-                                                    child: snapshot
-                                                                .child(
-                                                                    'profile')
-                                                                .value
-                                                                .toString() ==
-                                                            ""
-                                                        ? Image.asset(
-                                                            "assets/images/user.png")
-                                                        : Image.network(
-                                                            snapshot
-                                                                .child(
-                                                                    'profile')
-                                                                .value
-                                                                .toString(),
-                                                            fit: BoxFit.cover,
+                                              return Padding(
+                                                padding:
+                                                    const EdgeInsets.all(5.0),
+                                                child: Column(
+                                                  children: [
+                                                    Card(
+                                                      elevation: 0,
+                                                      color: Colors.transparent,
+                                                      child: ListTile(
+                                                        onTap: () {
+                                                          PersistentNavBarNavigator
+                                                              .pushNewScreen(
+                                                            context,
+                                                            screen: ChatScreen(
+                                                              name: snapshot
+                                                                  .child(
+                                                                      'username')
+                                                                  .value
+                                                                  .toString(),
+                                                              image: snapshot
+                                                                  .child(
+                                                                      'profile')
+                                                                  .value
+                                                                  .toString(),
+                                                              receiverId: snapshot
+                                                                  .child('uid')
+                                                                  .value
+                                                                  .toString(),
+                                                            ),
+                                                            withNavBar: false,
+                                                          );
+                                                        },
+                                                        leading: Container(
+                                                          height: 50,
+                                                          width: 50,
+                                                          clipBehavior:
+                                                              Clip.hardEdge,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        200), // radius of 10green as background color
                                                           ),
-                                                  ),
-                                                  title: Text(
-                                                      snapshot
-                                                          .child('username')
-                                                          .value
-                                                          .toString(),
-                                                      style: const TextStyle(
-                                                          fontSize: 18,
-                                                          fontWeight:
-                                                              FontWeight.w500)),
-                                                  subtitle: Text(snapshot
-                                                      .child('email')
-                                                      .value
-                                                      .toString()),
+                                                          child: snapshot
+                                                                      .child(
+                                                                          'profile')
+                                                                      .value
+                                                                      .toString() ==
+                                                                  ""
+                                                              ? Image.asset(
+                                                                  "assets/images/user.png")
+                                                              : Image.network(
+                                                                  snapshot
+                                                                      .child(
+                                                                          'profile')
+                                                                      .value
+                                                                      .toString(),
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                        ),
+                                                        title: Text(
+                                                          snapshot
+                                                              .child('username')
+                                                              .value
+                                                              .toString(),
+                                                          style:
+                                                              const TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 18.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                        subtitle: Text(
+                                                          snapshot
+                                                              .child('email')
+                                                              .value
+                                                              .toString(),
+                                                          style:
+                                                              const TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 14.0,
+                                                            fontWeight:
+                                                                FontWeight.w300,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    const Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10.0,
+                                                          right: 10.0),
+                                                      child: Divider(
+                                                        height: 1,
+                                                        color: Colors.grey,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               );
                                             }
@@ -220,16 +254,16 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
               }
             },
           )),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => SearchUser()));
-        },
-        child: const Icon(
-          Icons.chat,
-          color: Colors.white,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //         context, MaterialPageRoute(builder: (_) => SearchUser()));
+      //   },
+      //   child: const Icon(
+      //     Icons.chat,
+      //     color: Colors.white,
+      //   ),
+      // ),
     );
   }
 }
