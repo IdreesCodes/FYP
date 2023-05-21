@@ -38,7 +38,7 @@ class _VideoCallState extends State<VideoCall> {
         title: Padding(
           padding: const EdgeInsets.only(bottom: 10.0),
           child: Text(
-            'Video Call',
+            'Video Calling',
             style: Theme.of(context)
                 .textTheme
                 .headline6!
@@ -48,14 +48,21 @@ class _VideoCallState extends State<VideoCall> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 7),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
                 'assets/images/videoCall.png',
-                width: MediaQuery.of(context).size.width * 0.99,
+                width: MediaQuery.of(context).size.width * 0.75,
+              ),
+              Text(
+                'Please enter video call receiver ID',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              ),
+              SizedBox(
+                height: 25,
               ),
               InputTextField(
                   myController: callingId,
@@ -63,12 +70,15 @@ class _VideoCallState extends State<VideoCall> {
                   onFieldSubmittedValue: (value) {},
                   keyBoardType: TextInputType.emailAddress,
                   obscureText: false,
-                  hint: 'Enter App Id',
+                  hint: 'Enter ID',
                   onValidator: (value) {
                     return value.isEmpty ? 'enter App Id' : null;
                   }),
+              SizedBox(
+                height: 10,
+              ),
               RoundButton(
-                title: 'Join Call',
+                title: 'Call',
                 onPress: () {
                   Navigator.push(
                       context,

@@ -59,8 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 SvgPicture.asset(
                   'assets/svg/login 1.svg',
-                  height: 300,
-                  width: 200,
+                  height: 280,
+                  width: 180,
                 ),
                 Text(
                   'Login to Continue',
@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               obscureText: false,
                               hint: 'Email',
                               onValidator: (value) {
-                                return value.isEmpty ? 'enter email' : null;
+                                return value.isEmpty ? 'Enter Email!' : null;
                               }),
                           SizedBox(
                             height: height * 0.01,
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               obscureText: false,
                               hint: 'Password',
                               onValidator: (value) {
-                                return value.isEmpty ? 'enter password' : null;
+                                return value.isEmpty ? 'Enter Password!' : null;
                               }),
                         ],
                       ),
@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 context, RouteName.forgotScreen);
                           },
                           child: Text(
-                            'Forgot password?',
+                            'Forgot Password?',
                             style:
                                 Theme.of(context).textTheme.headline1!.copyWith(
                                       fontSize: 15,
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 context, RouteName.signUpScreen);
                           },
                           child: Text(
-                            'New here! Signup',
+                            'New here! SIGN UP',
                             style:
                                 Theme.of(context).textTheme.headline1!.copyWith(
                                       fontSize: 15,

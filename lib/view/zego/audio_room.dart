@@ -39,7 +39,7 @@ class _AudioRoomScreenState extends State<AudioRoomScreen> {
               )),
         ),
         title: Padding(
-          padding: const EdgeInsets.only(bottom: 10.0),
+          padding: const EdgeInsets.only(bottom: 5.0),
           child: Text(
             'Audio Room',
             style: Theme.of(context)
@@ -59,8 +59,15 @@ class _AudioRoomScreenState extends State<AudioRoomScreen> {
               padding: const EdgeInsets.only(top: 60.0),
               child: Image(
                 image: const AssetImage('assets/images/audio.png'),
-                width: MediaQuery.of(context).size.width * 0.90,
+                width: MediaQuery.of(context).size.width * 0.70,
               ),
+            ),
+            Text(
+              'Join or start an Audio Call, Enter ID ',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(
+              height: 25,
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -79,7 +86,7 @@ class _AudioRoomScreenState extends State<AudioRoomScreen> {
             Padding(
               padding: const EdgeInsets.fromLTRB(18, 10, 18, 0),
               child: RoundButton(
-                title: 'Join Call as host?',
+                title: 'Join as Host',
                 onPress: () {
                   Host = true;
                   Navigator.push(
@@ -95,7 +102,7 @@ class _AudioRoomScreenState extends State<AudioRoomScreen> {
             Padding(
               padding: const EdgeInsets.fromLTRB(18, 10, 18, 0),
               child: RoundButton(
-                title: 'Join Call as audience?',
+                title: 'Join as Audience',
                 onPress: () {
                   Host = true;
                   Navigator.push(

@@ -67,8 +67,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                           SvgPicture.asset(
                             'assets/svg/signup 1.svg',
-                            height: 300,
-                            width: 200,
+                            height: 280,
+                            width: 190,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 18.0),
@@ -99,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         hint: 'Username',
                                         onValidator: (value) {
                                           return value.isEmpty
-                                              ? 'enter username'
+                                              ? 'Enter Username!'
                                               : null;
                                         }),
                                     SizedBox(
@@ -120,7 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         hint: 'Email',
                                         onValidator: (value) {
                                           return value.isEmpty
-                                              ? 'enter email'
+                                              ? 'Enter Email!'
                                               : null;
                                         }),
                                     SizedBox(
@@ -136,7 +136,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         hint: 'Password',
                                         onValidator: (value) {
                                           return value.isEmpty
-                                              ? 'enter password'
+                                              ? 'Enter Password!'
                                               : null;
                                         }),
                                   ],

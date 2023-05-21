@@ -84,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               Positioned(
                                 top: 120,
-                                left: 120,
+                                left: 135,
                                 child: Container(
                                   height: 120,
                                   width: 120,
@@ -137,7 +137,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               const Positioned(
                                 top: 80,
-                                left: 218,
+                                left: 235,
                                 child: Padding(
                                   padding: EdgeInsets.only(top: 120.0),
                                   child: CircleAvatar(

@@ -67,13 +67,20 @@ class _LiveStState extends State<LiveSt> {
               'assets/images/live-stream.png',
               // fit: BoxFit.fill,
             ),
+            Text(
+              'Join or start a live Stream, Input ID',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+            ),
+            SizedBox(
+              height: 25,
+            ),
             InputTextField(
                 myController: streamIdController,
                 focusNode: userNameFocusNode,
                 onFieldSubmittedValue: (value) {},
                 keyBoardType: TextInputType.emailAddress,
                 obscureText: false,
-                hint: 'Enter App Id',
+                hint: 'Enter ID',
                 onValidator: (value) {
                   return value.isEmpty ? 'enter App Id' : null;
                 }),
@@ -86,16 +93,23 @@ class _LiveStState extends State<LiveSt> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  child: const Text('Go Live Now'),
+                  child: const Text(
+                    '                          Start Live                           ',
+                    style: TextStyle(fontSize: 20),
+                  ),
                   onPressed: () => _jumpToLivePage(
                     liveID: streamIdController.text,
                     isHost: true,
                   ),
                 ),
+                SizedBox(
+                  height: 12,
+                ),
                 ElevatedButton(
                   style: const ButtonStyle(),
                   child: const Text(
-                    'Watch Live Stream',
+                    '                          Join Live                           ',
+                    style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () => _jumpToLivePage(
                     liveID: streamIdController.text,

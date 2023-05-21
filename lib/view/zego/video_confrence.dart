@@ -54,7 +54,14 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
         children: [
           Image(
             image: const AssetImage('assets/images/video_conf.png'),
-            width: MediaQuery.of(context).size.width * 0.90,
+            width: MediaQuery.of(context).size.width * 0.75,
+          ),
+          Text(
+            'Please Enter Video Conference ID',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: 25,
           ),
           Padding(
             padding:
@@ -65,7 +72,7 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
                 onFieldSubmittedValue: (value) {},
                 keyBoardType: TextInputType.emailAddress,
                 obscureText: false,
-                hint: 'Enter  Id',
+                hint: 'Enter ID',
                 onValidator: (value) {
                   return value.isEmpty ? 'enter Id' : null;
                 }),

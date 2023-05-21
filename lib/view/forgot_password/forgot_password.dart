@@ -93,7 +93,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               obscureText: false,
                               hint: 'Email',
                               onValidator: (value) {
-                                return value.isEmpty ? 'enter email' : null;
+                                return value.isEmpty ? 'Enter Email!' : null;
                               }),
                           SizedBox(
                             height: height * 0.02,
