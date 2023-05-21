@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tech_media/res/color.dart';
@@ -58,7 +57,7 @@ class ProfileController with ChangeNotifier {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              content: Container(
+              content: SizedBox(
             height: 120,
             child: Column(
               children: [
@@ -94,7 +93,7 @@ class ProfileController with ChangeNotifier {
     setLoading(true);
     firebase_storage.Reference storageRef = firebase_storage
         .FirebaseStorage.instance
-        .ref('/profileImage' + SessionController().userId.toString());
+        .ref('/profileImage${SessionController().userId}');
     firebase_storage.UploadTask uploadTask =
         storageRef.putFile(File(image!.path).absolute);
     await Future.value(uploadTask);
@@ -117,7 +116,7 @@ class ProfileController with ChangeNotifier {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Update Username'),
+            title: const Text('Update Username'),
             content: SingleChildScrollView(
               child: Column(
                 children: [

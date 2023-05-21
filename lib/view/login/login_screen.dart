@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lottie/lottie.dart';
 import 'package:tech_media/utils/routes/route_name.dart';
 import 'package:provider/provider.dart';
 import 'package:tech_media/view_model/services/login/login_controller.dart';
 import '../../res/components/input_text_field.dart';
 import '../../res/components/round_button.dart';
-import 'package:tech_media/view_model/services/login/login_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

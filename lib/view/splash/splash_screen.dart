@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:tech_media/res/fonts.dart';
-
-import '../../res/color.dart';
 import '../../view_model/services/splash_services.dart';
 
 class SplashScreen extends StatefulWidget {

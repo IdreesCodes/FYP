@@ -4,10 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:tech_media/view/chat/messaging_screen.dart';
-import 'package:tech_media/view/dashboard/search_user.dart';
 import 'package:tech_media/view_model/services/session_controller.dart';
-
-import '../../utils/routes/route_name.dart';
 
 class AllUsersScreen extends StatefulWidget {
   const AllUsersScreen({Key? key}) : super(key: key);
@@ -37,7 +34,9 @@ class _AllUsersScreenState extends State<AllUsersScreen> {
                 return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasData) {
                 Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
-                print(map);
+                if (kDebugMode) {
+                  print(map);
+                }
                 username = map['username'];
                 name = map['username'];
                 uId = SessionController().userId.toString();

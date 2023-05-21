@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../res/color.dart';
@@ -46,7 +45,7 @@ class _SearchUserState extends State<SearchUser> {
             BoxShadow(
               spreadRadius: size.height * 0.0,
               blurRadius: size.height * 0.01,
-              offset: Offset(0, 1),
+              offset: const Offset(0, 1),
               color: AppColors.black.withOpacity(0.1),
             )
           ],
@@ -85,7 +84,7 @@ class _SearchUserState extends State<SearchUser> {
                   Expanded(
                       child: CustomTextField(
                           textEditingController: searchTxt,
-                          prefixIcon: Icon(Icons.search),
+                          prefixIcon: const Icon(Icons.search),
                           hint: 'Search',
                           isfillColorWhite: true,
                           onChange: (value) {

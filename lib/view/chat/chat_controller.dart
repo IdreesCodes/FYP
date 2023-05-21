@@ -34,7 +34,7 @@ class ChatController extends ChangeNotifier {
       });
       ref
           .child(
-              "${receiverId}${SessionController().userId.toString()}/${timeStamp.microsecondsSinceEpoch.toString()}")
+              "$receiverId${SessionController().userId.toString()}/${timeStamp.microsecondsSinceEpoch.toString()}")
           .set({
         'isSeen': false,
         'message': messageController.text.toString(),

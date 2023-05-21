@@ -50,7 +50,7 @@ class CustomTextField extends StatelessWidget {
             bottom: MediaQuery.of(context).size.width * 0.035,
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 0.6,
               style: BorderStyle.solid,
               color: AppColors.black,
@@ -62,7 +62,7 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 0.6,
               style: BorderStyle.solid,
               color: AppColors.grayColor,

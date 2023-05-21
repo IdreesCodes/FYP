@@ -1,4 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ref.child(SessionController().userId.toString()).onValue,
                   builder: (context, AsyncSnapshot snapshot) {
                     if (!snapshot.hasData) {
-                      print(SessionController().userId.toString);
+                      if (kDebugMode) {
+                        print(SessionController().userId.toString);
+                      }
                       return const Center(child: CircularProgressIndicator());
                     } else if (snapshot.hasData) {
                       Map<dynamic, dynamic> map = snapshot.data.snapshot.value;
@@ -73,13 +76,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   horizontal: 24.0,
                                   vertical: 0.0,
                                 ),
                                 child: Text(
-                                  '$username',
-                                  style: TextStyle(
+                                  username,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 48.0,
                                     fontWeight: FontWeight.bold,
@@ -126,7 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                             itemCount: 10,
                                             itemBuilder: (BuildContext context,
                                                 int index) {
-                                              print('pressed');
+                                              if (kDebugMode) {
+                                                print('pressed');
+                                              }
                                               return ListTile(
                                                 leading: const CircleAvatar(
                                                   backgroundColor: AppColors

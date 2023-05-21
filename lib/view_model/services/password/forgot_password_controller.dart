@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:provider/provider.dart';
 import 'package:tech_media/utils/routes/route_name.dart';
 
 import '../../../utils/utils.dart';
-import '../session_controller.dart';
 
 class ForgotPasswordController with ChangeNotifier {
   FirebaseAuth auth = FirebaseAuth.instance;
-  // DatabaseReference ref = FirebaseDatabase.instance.ref().child('Users');
+
   bool _loading = false;
   bool get loading => _loading;
 

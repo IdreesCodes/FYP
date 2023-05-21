@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tech_media/res/color.dart';
 import 'package:zego_uikit_prebuilt_live_streaming/zego_uikit_prebuilt_live_streaming.dart';
-
 import '../../res/components/input_text_field.dart';
-import '../../res/components/round_button.dart';
 
 class LiveSt extends StatefulWidget {
   const LiveSt({Key? key}) : super(key: key);
@@ -44,7 +41,7 @@ class _LiveStState extends State<LiveSt> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image(
+              child: const Image(
                 image: AssetImage('assets/images/Back.png'),
               )),
         ),
@@ -96,8 +93,8 @@ class _LiveStState extends State<LiveSt> {
                   ),
                 ),
                 ElevatedButton(
-                  style: ButtonStyle(),
-                  child: Text(
+                  style: const ButtonStyle(),
+                  child: const Text(
                     'Watch Live Stream',
                   ),
                   onPressed: () => _jumpToLivePage(

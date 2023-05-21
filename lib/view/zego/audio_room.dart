@@ -1,13 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tech_media/view/zego/live_streaming.dart';
 import 'package:zego_uikit_prebuilt_live_audio_room/zego_uikit_prebuilt_live_audio_room.dart';
 import 'dart:math' as math;
-
 import '../../res/components/input_text_field.dart';
 import '../../res/components/round_button.dart';
 
-//final String userId = math.Random().nextInt(10000).toString();
 final user = FirebaseAuth.instance.currentUser;
 final userID = user?.uid;
 final displayName = user?.email;
@@ -37,7 +34,7 @@ class _AudioRoomScreenState extends State<AudioRoomScreen> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image(
+              child: const Image(
                 image: AssetImage('assets/images/Back.png'),
               )),
         ),

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tech_media/utils/routes/route_name.dart';
 import 'package:provider/provider.dart';
-import 'package:tech_media/view_model/services/login/login_controller.dart';
 import '../../res/components/input_text_field.dart';
 import '../../res/components/round_button.dart';
-import 'package:tech_media/view_model/services/login/login_controller.dart';
 
 import '../../view_model/services/password/forgot_password_controller.dart';
 
@@ -44,7 +41,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image(
+              child: const Image(
                 image: AssetImage('assets/images/Back.png'),
               )),
         ),

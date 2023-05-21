@@ -60,6 +60,8 @@ dependencies:
   animations: ^2.0.7
   flutter_animated_icons: ^1.0.1
   get: ^4.6.5
+  flutter_card_swiper: ^5.0.0
+
 
 
 

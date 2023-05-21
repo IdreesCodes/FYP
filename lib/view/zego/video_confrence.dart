@@ -32,14 +32,14 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Image(
+              child: const Image(
                 image: AssetImage('assets/images/Back.png'),
               )),
         ),
         title: Padding(
           padding: const EdgeInsets.only(bottom: 10.0),
           child: Text(
-            'Video Confrence',
+            'Video Conference',
             style: Theme.of(context)
                 .textTheme
                 .headline6!

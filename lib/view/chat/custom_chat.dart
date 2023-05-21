@@ -20,20 +20,18 @@ class CustomChat extends StatelessWidget {
             margin: const BubbleEdges.only(top: 5, right: 100, bottom: 5),
             alignment: Alignment.topLeft,
             nip: BubbleNip.leftTop,
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(snapshot.child('message').value.toString(),
-                      textAlign: TextAlign.left),
-                  Text(
-                    snapshot.child('time').value.toString(),
-                    style: TextStyle(fontSize: 10),
-                    textAlign: TextAlign.right,
-                    //textAlign: TextAlign.right
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(snapshot.child('message').value.toString(),
+                    textAlign: TextAlign.left),
+                Text(
+                  snapshot.child('time').value.toString(),
+                  style: const TextStyle(fontSize: 10),
+                  textAlign: TextAlign.right,
+                  //textAlign: TextAlign.right
+                ),
+              ],
             ),
           );
         } else {
@@ -42,20 +40,18 @@ class CustomChat extends StatelessWidget {
             alignment: Alignment.topRight,
             nip: BubbleNip.rightTop,
             color: const Color.fromRGBO(225, 255, 199, 1.0),
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(snapshot.child('message').value.toString(),
-                      textAlign: TextAlign.left),
-                  Text(
-                    snapshot.child('time').value.toString(),
-                    style: TextStyle(fontSize: 10),
-                    textAlign: TextAlign.right,
-                    //textAlign: TextAlign.right
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(snapshot.child('message').value.toString(),
+                    textAlign: TextAlign.left),
+                Text(
+                  snapshot.child('time').value.toString(),
+                  style: const TextStyle(fontSize: 10),
+                  textAlign: TextAlign.right,
+                  //textAlign: TextAlign.right
+                ),
+              ],
             ),
           );
         }

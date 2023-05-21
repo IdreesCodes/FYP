@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,7 @@ import 'package:tech_media/view/login/login_screen.dart';
 import 'package:tech_media/view_model/services/profile/profile_controller.dart';
 
 import '../../res/color.dart';
-import '../../utils/routes/route_name.dart';
+
 import '../../view_model/services/session_controller.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -53,7 +54,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           .onValue,
                       builder: (context, AsyncSnapshot snapshot) {
                         if (!snapshot.hasData) {
-                          print(SessionController().userId.toString);
+                          if (kDebugMode) {
+                            print(SessionController().userId.toString);
+                          }
                           return const Center(
                               child: CircularProgressIndicator());
                         } else if (snapshot.hasData) {
@@ -62,11 +65,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           return Stack(
                             alignment: Alignment.topCenter,
                             children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/images/Mask group.png',
-                                  fit: BoxFit.cover,
-                                ),
+                              Image.asset(
+                                'assets/images/Mask group.png',
+                                fit: BoxFit.cover,
                               ),
                               Positioned(
                                 top: 70,
@@ -123,12 +124,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                         object,
                                                         stack,
                                                       ) {
-                                                        return Container(
-                                                            child: const Icon(
+                                                        return const Icon(
                                                           Icons.error_outline,
                                                           color: AppColors
                                                               .alertColor,
-                                                        ));
+                                                        );
                                                       })
                                               : Image.file(
                                                   File(provider.image!.path)
@@ -205,7 +205,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         signOut();
                                         PersistentNavBarNavigator.pushNewScreen(
                                           context,
-                                          screen: LoginScreen(),
+                                          screen: const LoginScreen(),
                                           withNavBar: false,
                                         );
                                       },
