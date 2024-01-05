@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   username,
                                   style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 47.0,
+                                    fontSize: 48.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
