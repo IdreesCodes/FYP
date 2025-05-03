@@ -1,4 +1,4 @@
-# tech_media
+# Comtech
 
 Demo project
 A new Flutter project.
